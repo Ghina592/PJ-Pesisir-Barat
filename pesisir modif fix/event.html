@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Event - Pesisir Barat</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <meta name="theme-color" content="#e9caa2" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-header">
+        <img src="assets/img/logo-small.png" class="hero-logo" onclick="window.location.href='index.html'" style="cursor: pointer;" />
+        <div class="hero-text">
+          <h3>PEMERINTAHAN</h3>
+          <h4>KABUPATEN PESISIR BARAT</h4>
+        </div>
+      </div>
+
+      <div class="hero-center">
+        <h1>SELAMAT DATANG DI WEBSITE RESMI</h1>
+        <h2>KABUPATEN PESISIR BARAT</h2>
+      </div>
+
+      <div class="hamburger" id="hamburgerBtn">☰</div>
+
+      <nav class="main-nav">
+        <div class="nav-item" onclick="window.location.href='index.html'">BERANDA</div>
+        <div class="nav-item" onclick="window.location.href='profil.html'">PROFIL</div>
+        <div class="nav-item" onclick="window.location.href='pariwisata.html'">PARIWISATA</div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="index.html">BERANDA</a> &gt; 
+        <a href="event.html">EVENT</a> &gt; 
+        <span>EVENT YANG AKAN DATANG</span>
+      </nav>
+
+      <section class="event-listing-section">
+        <h1 class="page-title">EVENT YANG AKAN DATANG</h1>
+        
+        <div class="carousel-wrapper event-carousel">
+          <button class="carousel-btn btn-prev" aria-label="Sebelumnya">‹</button>
+          
+          <div class="carousel-track" id="eventCarousel">
+            <!-- Event cards will be loaded here -->
+          </div>
+          
+          <button class="carousel-btn btn-next" aria-label="Berikutnya">›</button>
+        </div>
+
+        <div class="carousel-dots" id="eventDots"></div>
+      </section>
+
+      <section class="event-grid-section">
+        <h2 class="section-title">SEMUA EVENT</h2>
+        
+        <div id="eventGrid" class="event-grid">
+          <!-- All events will be loaded here -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-about">
+          <img src="assets/img/logo-small.png" alt="logo" class="footer-logo" />
+          <h2 class="footer-title">PEMERINTAHAN <br /><span>KABUPATEN PESISIR BARAT</span></h2>
+          <div class="footer-address">
+            <p><img src="assets/map.png" /> Jl. Kesuma No. 1 Gedung A Lt.1 Kompleks Perkantoran Pemda, Kec. Pesisir Tengah</p>
+            <p>Kabupaten Pesisir Barat, Provinsi Lampung – Indonesia 34874</p>
+            <p><img src="assets/wa.png" alt="" /> +62 853-6998-9990</p>
+            <p><img src="assets/email.png" style="width: 25px" alt="" /> admin@pesisirbaratkab.go.id</p>
+          </div>
+        </div>
+
+        <div class="footer-follow">
+          <h3 class="footer-heading">IKUTI KAMI</h3>
+          <div class="social-icons">
+            <a href="#"><img src="assets/youtube.png" alt="yt" /></a>
+            <a href="#"><img src="assets/facebook.png" alt="fb" /></a>
+            <a href="#"><img src="assets/instagram.png" alt="ig" /></a>
+            <a href="#"><img src="assets/twitter.png" alt="tw" /></a>
+          </div>
+          <p class="link-website"><img src="assets/web.png" alt="" /> https://pesisirbaratkab.go.id</p>
+        </div>
+
+        <div class="footer-map">
+          <h3 class="footer-heading">LOKASI</h3>
+          <img src="assets/lokasi.png" class="map-img" alt="Map" />
+        </div>
+      </div>
+
+      <div class="footer-bottom" style="text-align: center">
+        © <span id="year"></span> Pemerintah Kabupaten Pesisir Barat — All rights reserved.
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', async function() {
+        const events = await DataManager.load('event');
+        
+        // Render carousel
+        const carousel = document.getElementById('eventCarousel');
+        if (carousel) {
+          carousel.innerHTML = events.map(event => `
+            <div class="event-card" onclick="window.location.href='detail-event.html?id=${event.id}'">
+              <img src="${event.gambar}" class="event-image" alt="${event.nama}" />
+              <div class="event-info">
+                <h3>${event.nama}</h3>
+                <p class="event-date">${formatDateLong(event.tanggal)}</p>
+                <a href="detail-event.html?id=${event.id}">Lihat Selengkapnya...</a>
+              </div>
+            </div>
+          `).join('');
+
+          // Initialize carousel
+          new Carousel('.event-carousel', { autoPlay: true, interval: 5000 });
+        }
+
+        // Render grid
+        const grid = document.getElementById('eventGrid');
+        if (grid) {
+          grid.innerHTML = events.map(event => `
+            <div class="event-grid-card" onclick="window.location.href='detail-event.html?id=${event.id}'">
+              <img src="${event.gambar}" alt="${event.nama}" />
+              <div class="event-grid-info">
+                <h3>${event.nama}</h3>
+                <p class="event-date"><img src="assets/icon-date.png" alt="" /> ${formatDateLong(event.tanggal)}</p>
+                <p class="event-location"><img src="assets/map.png" alt="" style="width:16px" /> ${event.lokasi}</p>
+              </div>
+            </div>
+          `).join('');
+        }
+      });
+    </script>
+  </body>
+</html>

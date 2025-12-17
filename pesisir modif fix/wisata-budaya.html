@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Pesisir Barat — Wisata Kuliner</title>
+    <title>Pesisir Barat — Wisata Budaya</title>
 
     <!-- Fonts -->
     <link
@@ -78,7 +78,7 @@
     <!-- MAIN CONTENT -->
     <main>
         <div class="container" style="margin-top: 40px;">
-            <h1 class="page-title" style="text-align: center; color: #0c4a6e;">WISATA KULINER</h1>
+            <h1 class="page-title" style="text-align: center; color: #0c4a6e;">WISATA BUDAYA</h1>
             <div class="wisata-list-container" id="wisataList">
                 <!-- Cards will be loaded dynamically -->
                 <p>Loading...</p>
@@ -172,13 +172,13 @@
     <script src="script.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', async function() {
-        // Load wisata kuliner only
+        // Load wisata budaya only
         const allWisata = await DataManager.load('wisata');
-        const wisataKuliner = allWisata.filter(w => w.kategori === 'wisata-kuliner');
+        const wisataBudaya = allWisata.filter(w => w.kategori === 'wisata-budaya');
         
         const container = document.getElementById('wisataList');
-        if (container && wisataKuliner.length > 0) {
-          container.innerHTML = wisataKuliner.map(w => `
+        if (container && wisataBudaya.length > 0) {
+          container.innerHTML = wisataBudaya.map(w => `
             <a href="detail-wisata.html?id=${w.id}" style="text-decoration: none; color: inherit; display: block; width: 100%;">
               <div class="wisata-card">
                 <img src="${w.gambarHero}" alt="${w.nama}" />
@@ -188,7 +188,7 @@
             </a>
           `).join('');
         } else if (container) {
-          container.innerHTML = '<p>Belum ada data wisata kuliner.</p>';
+          container.innerHTML = '<p>Belum ada data wisata budaya.</p>';
         }
       });
 

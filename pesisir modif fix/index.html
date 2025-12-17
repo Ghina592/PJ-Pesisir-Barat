@@ -10,24 +10,49 @@
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="profil.css" />
     <link rel="stylesheet" href="index.css" />
     <meta name="theme-color" content="#e9caa2" />
   </head>
   <body>
+    <!-- TOP BAR / HERO -->
     <header class="hero">
-      <!-- LEFT HEADER -->
-      <div class="hero-header">
-        <img src="assets/img/logo-small.png" class="hero-logo" onclick="window.location.href='index.html'" style="cursor: pointer;" />
-        <div class="hero-text">
-          <h3>PEMERINTAHAN</h3>
-          <h4>KABUPATEN PESISIR BARAT</h4>
-        </div>
-      </div>
+      <div class="hero-overlay"></div>
 
-      <!-- CENTER TITLES -->
-      <div class="hero-center">
-        <h1>SELAMAT DATANG DI WEBSITE RESMI</h1>
-        <h2>KABUPATEN PESISIR BARAT</h2>
+      <div class="hero-top container">
+        <!-- Welcome Text (Center) -->
+        <div class="hero-content">
+          <h1 class="hero-title">SELAMAT DATANG DI WEBSITE RESMI</h1>
+          <h2 class="hero-subtitle">KABUPATEN PESISIR BARAT</h2>
+        </div>
+
+        <div class="hero-bottom">
+          <div class="official left-official">
+            <img
+              src="assets/img/bupati.png"
+              alt="bupati"
+              class="official-photo"
+            />
+          </div>
+
+          <div class="hero-center">
+            <img src="assets/img/logo.png" alt="logo" class="logo-center" onclick="window.location.href='index.html'" style="cursor: pointer;" />
+            <h1>NEGERI PARA SAI BATIN DAN ULAMA</h1>
+
+            <div class="search">
+              <input type="search" placeholder="Search..." id="searchInput" />
+              <button id="searchBtn" aria-label="search">🔍</button>
+            </div>
+          </div>
+
+          <div class="official right-official">
+            <img
+              src="assets/img/wakil.png"
+              alt="wakil"
+              class="official-photo"
+            />
+          </div>
+        </div>
       </div>
 
       <!-- HAMBURGER (MOBILE ONLY) -->
@@ -105,6 +130,9 @@
             ›
           </button>
         </div>
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="event.html" class="btn btn-secondary" style="display: inline-block;">Lihat Semua Event →</a>
+        </div>
       </section>
 
       <!-- BERITA & INFORMASI -->
@@ -119,7 +147,7 @@
           <table class="table-berita">
             <tr>
               <td class="img-col">
-                <img src="assets/berita1.png" alt="" />
+                <img src="assets/berita/berita1.png" alt="" />
               </td>
               <td class="text-col">
                 <div class="judul">
@@ -135,7 +163,7 @@
 
             <tr>
               <td class="img-col">
-                <img src="assets/berita2.png" alt="" />
+                <img src="assets/berita/berita2.png" alt="" />
               </td>
               <td class="text-col">
                 <div class="judul">
@@ -151,7 +179,7 @@
 
             <tr>
               <td class="img-col">
-                <img src="assets/berita3.png" alt="" />
+                <img src="assets/berita/berita3.png" alt="" />
               </td>
               <td class="text-col">
                 <div class="judul">
@@ -180,6 +208,12 @@
               <td>Pengumuman Kelulusan CPNS</td>
             </tr>
           </table>
+        </div>
+        
+        <!-- Lihat Semua buttons at bottom -->
+        <div style="display: flex; justify-content: space-between; padding: 20px 30px;">
+          <a href="berita.html" class="btn btn-primary" style="display: inline-block;">Lihat Semua Berita →</a>
+          <a href="informasi.html" class="btn btn-primary" style="display: inline-block;">Lihat Semua Informasi →</a>
         </div>
       </div>
 
@@ -348,33 +382,43 @@
       </div>
     </footer>
 
+    <script src="script.js"></script>
     <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
+      document.addEventListener('DOMContentLoaded', async function() {
+        // Load events dynamically
+        const events = await DataManager.load('event');
+        const track = document.getElementById('carouselTrack');
+        
+        if (track && events.length > 0) {
+          track.innerHTML = events.map(event => `
+            <div class="event-card" onclick="window.location.href='detail-event.html?id=${event.id}'">
+              <img src="${event.gambar}" class="event-image" alt="${event.nama}" />
+              <div class="event-info">
+                <h3>${event.nama}</h3>
+                <a href="detail-event.html?id=${event.id}">Lihat Selengkapnya...</a>
+              </div>
+            </div>
+          `).join('');
+        }
 
-      const track = document.getElementById("carouselTrack");
-      const btnNext = document.querySelector(".btn-next");
-      const btnPrev = document.querySelector(".btn-prev");
+        // Make berita clickable
+        document.querySelectorAll('.table-berita tr').forEach((row, index) => {
+          row.style.cursor = 'pointer';
+          row.addEventListener('click', () => {
+            window.location.href = `detail-berita.html?id=${index + 1}`;
+          });
+        });
 
-      if (btnNext && track) {
-        btnNext.onclick = () => {
-          track.scrollBy({ left: 500, behavior: "smooth" });
-        };
-      }
-      if (btnPrev && track) {
-        btnPrev.onclick = () => {
-          track.scrollBy({ left: -500, behavior: "smooth" });
-        };
-      }
-
-      // HAMBURGER MENU TOGGLE
-      // HAMBURGER MENU TOGGLE
-      const hamburger = document.getElementById("hamburgerBtn");
-      const mainNav = document.querySelector(".main-nav");
-
-      hamburger.addEventListener("click", () => {
-        mainNav.classList.toggle("open");
+        // Make informasi clickable
+        document.querySelectorAll('.table-info tr').forEach((row, index) => {
+          row.style.cursor = 'pointer';
+          row.addEventListener('click', () => {
+            window.location.href = `detail-informasi.html?id=${index + 1}`;
+          });
+        });
       });
     </script>
 
   </body>
 </html>
+

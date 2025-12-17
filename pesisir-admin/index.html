@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesisir Barat - JSON Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>📝 Pesisir Barat JSON Generator</h1>
+      <p>Tool untuk generate file JSON konten website</p>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="berita">Berita</button>
+      <button class="tab" data-tab="wisata">Wisata</button>
+      <button class="tab" data-tab="event">Event</button>
+      <button class="tab" data-tab="informasi">Informasi</button>
+    </nav>
+
+    <!-- BERITA FORM -->
+    <section class="tab-content active" id="tab-berita">
+      <h2>Kelola Berita</h2>
+      
+      <div class="form-section">
+        <h3>Tambah Berita Baru</h3>
+        <form id="beritaForm">
+          <div class="form-group">
+            <label>Judul</label>
+            <input type="text" name="judul" required placeholder="Judul berita...">
+          </div>
+          <div class="form-group">
+            <label>Ringkasan</label>
+            <textarea name="ringkasan" required placeholder="Ringkasan singkat..." rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Konten Lengkap</label>
+            <textarea name="konten" required placeholder="Isi berita lengkap..." rows="6"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Tanggal</label>
+              <input type="date" name="tanggal" required>
+            </div>
+            <div class="form-group">
+              <label>Kategori</label>
+              <select name="kategori">
+                <option value="pemerintahan">Pemerintahan</option>
+                <option value="pendidikan">Pendidikan</option>
+                <option value="sosial">Sosial</option>
+                <option value="ekonomi">Ekonomi</option>
+                <option value="kesehatan">Kesehatan</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Path Gambar (relatif dari folder utama)</label>
+            <input type="text" name="gambar" placeholder="assets/berita/nama-gambar.png" required>
+          </div>
+          <button type="submit" class="btn btn-primary">+ Tambah Berita</button>
+        </form>
+      </div>
+
+      <div class="data-section">
+        <h3>Daftar Berita (<span id="beritaCount">0</span>)</h3>
+        <div id="beritaList" class="item-list"></div>
+      </div>
+
+      <div class="export-section">
+        <button class="btn btn-success" onclick="exportJSON('berita')">📥 Download berita.json</button>
+        <button class="btn btn-secondary" onclick="importJSON('berita')">📤 Import berita.json</button>
+        <input type="file" id="importBerita" accept=".json" style="display:none">
+      </div>
+    </section>
+
+    <!-- WISATA FORM -->
+    <section class="tab-content" id="tab-wisata">
+      <h2>Kelola Wisata</h2>
+      
+      <div class="form-section">
+        <h3>Tambah Wisata Baru</h3>
+        <form id="wisataForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nama Wisata</label>
+              <input type="text" name="nama" required placeholder="Nama tempat wisata...">
+            </div>
+            <div class="form-group">
+              <label>Kategori</label>
+              <select name="kategori">
+                <option value="wisata-alam">Wisata Alam</option>
+                <option value="wisata-budaya">Wisata Budaya</option>
+                <option value="wisata-kuliner">Wisata Kuliner</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Ringkasan</label>
+            <textarea name="ringkasan" required placeholder="Deskripsi singkat..." rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Deskripsi Lengkap</label>
+            <textarea name="deskripsi" required placeholder="Deskripsi detail..." rows="5"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Path Gambar Hero</label>
+            <input type="text" name="gambarHero" placeholder="assets/wisata/nama-gambar.png" required>
+          </div>
+          <div class="form-group">
+            <label>Galeri (pisahkan dengan koma)</label>
+            <input type="text" name="galeri" placeholder="assets/wisata/img1.jpg, assets/wisata/img2.jpg">
+          </div>
+          <div class="form-group">
+            <label>Estimasi Biaya (format JSON)</label>
+            <textarea name="estimasiBiaya" rows="3" placeholder='{"transport": "Rp100.000", "total": "Rp500.000"}'></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Instagram</label>
+              <input type="text" name="instagram" placeholder="@username">
+            </div>
+            <div class="form-group">
+              <label>WhatsApp</label>
+              <input type="text" name="whatsapp" placeholder="+62xxx">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Link Google Maps</label>
+            <input type="text" name="lokasi" placeholder="https://maps.app.goo.gl/xxx">
+          </div>
+          <button type="submit" class="btn btn-primary">+ Tambah Wisata</button>
+        </form>
+      </div>
+
+      <div class="data-section">
+        <h3>Daftar Wisata (<span id="wisataCount">0</span>)</h3>
+        <div id="wisataList" class="item-list"></div>
+      </div>
+
+      <div class="export-section">
+        <button class="btn btn-success" onclick="exportJSON('wisata')">📥 Download wisata.json</button>
+        <button class="btn btn-secondary" onclick="importJSON('wisata')">📤 Import wisata.json</button>
+        <input type="file" id="importWisata" accept=".json" style="display:none">
+      </div>
+    </section>
+
+    <!-- EVENT FORM -->
+    <section class="tab-content" id="tab-event">
+      <h2>Kelola Event</h2>
+      
+      <div class="form-section">
+        <h3>Tambah Event Baru</h3>
+        <form id="eventForm">
+          <div class="form-group">
+            <label>Nama Event</label>
+            <input type="text" name="nama" required placeholder="Nama event...">
+          </div>
+          <div class="form-group">
+            <label>Ringkasan</label>
+            <textarea name="ringkasan" required placeholder="Ringkasan event..." rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Deskripsi Lengkap</label>
+            <textarea name="deskripsi" required placeholder="Deskripsi lengkap..." rows="5"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Tanggal</label>
+              <input type="date" name="tanggal" required>
+            </div>
+            <div class="form-group">
+              <label>Waktu</label>
+              <input type="text" name="waktu" placeholder="08:00 WIB">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Lokasi</label>
+            <input type="text" name="lokasi" placeholder="Nama tempat event">
+          </div>
+          <div class="form-group">
+            <label>Path Gambar</label>
+            <input type="text" name="gambar" placeholder="assets/event/nama-gambar.png" required>
+          </div>
+          <div class="form-group">
+            <label>Harga Tiket (format JSON)</label>
+            <textarea name="hargaTiket" rows="2" placeholder='{"vip": "Rp100.000", "reguler": "Rp50.000"}'></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Instagram</label>
+              <input type="text" name="instagram" placeholder="@username">
+            </div>
+            <div class="form-group">
+              <label>WhatsApp</label>
+              <input type="text" name="whatsapp" placeholder="+62xxx">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Link Pendaftaran</label>
+            <input type="text" name="linkPendaftaran" placeholder="https://...">
+          </div>
+          <button type="submit" class="btn btn-primary">+ Tambah Event</button>
+        </form>
+      </div>
+
+      <div class="data-section">
+        <h3>Daftar Event (<span id="eventCount">0</span>)</h3>
+        <div id="eventList" class="item-list"></div>
+      </div>
+
+      <div class="export-section">
+        <button class="btn btn-success" onclick="exportJSON('event')">📥 Download event.json</button>
+        <button class="btn btn-secondary" onclick="importJSON('event')">📤 Import event.json</button>
+        <input type="file" id="importEvent" accept=".json" style="display:none">
+      </div>
+    </section>
+
+    <!-- INFORMASI FORM -->
+    <section class="tab-content" id="tab-informasi">
+      <h2>Kelola Informasi</h2>
+      
+      <div class="form-section">
+        <h3>Tambah Informasi Baru</h3>
+        <form id="informasiForm">
+          <div class="form-group">
+            <label>Judul</label>
+            <input type="text" name="judul" required placeholder="Judul informasi...">
+          </div>
+          <div class="form-group">
+            <label>Ringkasan</label>
+            <textarea name="ringkasan" required placeholder="Ringkasan singkat..." rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Konten Lengkap</label>
+            <textarea name="konten" required placeholder="Isi informasi lengkap..." rows="6"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Tanggal</label>
+              <input type="date" name="tanggal" required>
+            </div>
+            <div class="form-group">
+              <label>Kategori</label>
+              <select name="kategori">
+                <option value="pengumuman">Pengumuman</option>
+                <option value="pelayanan">Pelayanan</option>
+                <option value="agenda">Agenda</option>
+                <option value="himbauan">Himbauan</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Link Lampiran (opsional)</label>
+            <input type="text" name="lampiran" placeholder="https://...">
+          </div>
+          <button type="submit" class="btn btn-primary">+ Tambah Informasi</button>
+        </form>
+      </div>
+
+      <div class="data-section">
+        <h3>Daftar Informasi (<span id="informasiCount">0</span>)</h3>
+        <div id="informasiList" class="item-list"></div>
+      </div>
+
+      <div class="export-section">
+        <button class="btn btn-success" onclick="exportJSON('informasi')">📥 Download informasi.json</button>
+        <button class="btn btn-secondary" onclick="importJSON('informasi')">📤 Import informasi.json</button>
+        <input type="file" id="importInformasi" accept=".json" style="display:none">
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -3,119 +3,90 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Pesisir Barat</title>
+    <title>Pesisir Barat — Wisata Alam</title>
 
     <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="pariwisata.css" />
-    <style>
-      .container {
-        display: flex;
-        flex-direction: column; /* semua box ke bawah */
-        align-items: center; /* posisi box di tengah */
-        gap: 25px; /* jarak antar box */
-        margin-top: 40px;
-        padding-top: 30px;
-        padding-bottom: 50px;
-      }
 
-      .box {
-        width: 320px;
-        border: 2px solid #000;
-        border-radius: 30px;
-        padding: 20px;
-        text-align: center;
-
-      }
-
-      .box-img {
-        width: 100%;
-        border-radius: 20px;
-      }
-
-      .box-desc {
-        margin-top: 15px;
-        font-size: 16px;
-      }
+    <!-- Styles -->
+    <link rel="stylesheet" href="pariwisata-sub.css" />
     
-    </style>
+    <!-- meta for theme-color -->
     <meta name="theme-color" content="#e9caa2" />
   </head>
   <body>
+    <!-- TOP BAR / HERO -->
     <header class="hero">
-      <!-- LEFT HEADER -->
-      <div class="hero-header">
-        <img src="assets/img/logo-small.png" class="hero-logo" onclick="window.location.href='index.html'" style="cursor: pointer;" />
-        <div class="hero-text">
-          <h3>PEMERINTAHAN</h3>
-          <h4>KABUPATEN PESISIR BARAT</h4>
-        </div>
-      </div>
+      <div class="hero-overlay"></div>
 
-      <!-- CENTER TITLES -->
-      <div class="hero-center">
-        <h1>SELAMAT DATANG DI WEBSITE RESMI</h1>
-        <h2>KABUPATEN PESISIR BARAT</h2>
-        <div class="search">
+      <div class="hero-top container">
+        <!-- Welcome Text (Center) -->
+        <div class="hero-content">
+          <h1 class="hero-title">SELAMAT DATANG DI WEBSITE RESMI</h1>
+          <h2 class="hero-subtitle">KABUPATEN PESISIR BARAT</h2>
+        </div>
+
+        <div class="hero-bottom">
+          <div class="official left-official">
+            <img
+              src="assets/img/bupati.png"
+              alt="bupati"
+              class="official-photo"
+            />
+          </div>
+
+          <div class="hero-center">
+            <img src="assets/img/logo.png" alt="logo" class="logo-center" onclick="window.location.href='index.html'" style="cursor: pointer;" />
+            <h1>NEGERI PARA SAI BATIN DAN ULAMA</h1>
+
+            <div class="search">
               <input type="search" placeholder="Search..." id="searchInput" />
               <button id="searchBtn" aria-label="search">🔍</button>
             </div>
+          </div>
+
+          <div class="official right-official">
+            <img
+              src="assets/img/wakil.png"
+              alt="wakil"
+              class="official-photo"
+            />
+          </div>
+        </div>
       </div>
 
       <!-- HAMBURGER (MOBILE ONLY) -->
       <div class="hamburger" id="hamburgerBtn">☰</div>
 
       <!-- NAVIGATION -->
-      <nav class="main-nav">
-        <div class="nav-item" onclick="window.location.href='index.html'">
-          BERANDA
+       <nav class="main-nav">
+        <div class="nav-item" onclick="window.location.href='wisata-alam.html'">
+          WISATA ALAM
         </div>
-        <div class="nav-item" onclick="window.location.href='profil.html'">
-          PROFIL
+        <div class="nav-item" onclick="window.location.href='wisata-budaya.html'">
+          WISATA BUDAYA
         </div>
-        <div class="nav-item" onclick="window.location.href='pariwisata.html'">
-          PARIWISATA
+        <div class="nav-item" onclick="window.location.href='wisata-kuliner.html'">
+          WISATA KULINER
         </div>
       </nav>
     </header>
 
-    <!-- MAIN: gunakan .container agar konten tidak mepet -->
-    <main class="container">
-      <div class="box">
-        <img
-          src="assets/pulau-pisang.png"
-          alt="Gambar Wisata"
-          class="box-img"
-        />
-        <p class="box-desc">
-          Pulau Pisang, Sebuah Harta Tersembunyi di Lampung, Si Cantik yang
-          Memikat dengan Keindahan Pantainya
-        </p>
-      </div>
-
-      <div class="box">
-        <img src="assets/airterjun.png" alt="Gambar Wisata" class="box-img" />
-        <p class="box-desc">
-          Air Terjun Keghamian, Permata Tersembunyi di Tengah Hutan Bukit
-          Barisan
-        </p>
-      </div>
-
-      <div class="box">
-        <img
-          src="assets/bukitbarisan.png"
-          alt="Gambar Wisata"
-          class="box-img"
-        />
-        <p class="box-desc">
-          Taman Nasional Bukit Barisan Selatan, Surga Liar di Ujung Sumatra
-        </p>
-      </div>
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="container" style="margin-top: 40px;">
+            <h1 class="page-title" style="text-align: center; color: #0c4a6e;">WISATA ALAM</h1>
+            <div class="wisata-list-container" id="wisataList">
+                <!-- Cards will be loaded dynamically -->
+                <p>Loading...</p>
+            </div>
+        </div>
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="container footer-grid">
         <!-- ABOUT -->
@@ -198,47 +169,37 @@
       </div>
     </footer>
 
+    <script src="script.js"></script>
     <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
+      document.addEventListener('DOMContentLoaded', async function() {
+        // Load wisata alam only
+        const allWisata = await DataManager.load('wisata');
+        const wisataAlam = allWisata.filter(w => w.kategori === 'wisata-alam');
+        
+        const container = document.getElementById('wisataList');
+        if (container && wisataAlam.length > 0) {
+          container.innerHTML = wisataAlam.map(w => `
+            <a href="detail-wisata.html?id=${w.id}" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+              <div class="wisata-card">
+                <img src="${w.gambarHero}" alt="${w.nama}" />
+                <h3 class="wisata-card-title">${w.nama}</h3>
+                <div class="wisata-card-desc">${w.ringkasan}</div>
+              </div>
+            </a>
+          `).join('');
+        } else if (container) {
+          container.innerHTML = '<p>Belum ada data wisata alam.</p>';
+        }
+      });
 
-      const track = document.getElementById("carouselTrack");
-      const btnNext = document.querySelector(".btn-next");
-      const btnPrev = document.querySelector(".btn-prev");
-
-      if (btnNext && track) {
-        btnNext.onclick = () => {
-          track.scrollBy({ left: 500, behavior: "smooth" });
-        };
-      }
-      if (btnPrev && track) {
-        btnPrev.onclick = () => {
-          track.scrollBy({ left: -500, behavior: "smooth" });
-        };
-      }
-
-      // HAMBURGER MENU TOGGLE
+      // Hamburger menu
       const hamburger = document.getElementById("hamburgerBtn");
-      const mainNav = document.getElementById("mainNav");
-
-      hamburger.addEventListener("click", () => {
-        mainNav.classList.toggle("open");
-      });
-    </script>
-    <script>
-      document.querySelectorAll(".nav-item.dropdown").forEach((drop) => {
-        const btn = drop.querySelector(".dropbtn");
-
-        btn.addEventListener("click", function (e) {
-          e.stopPropagation();
-          drop.classList.toggle("open");
+      const mainNav = document.querySelector(".main-nav");
+      if (hamburger && mainNav) {
+        hamburger.addEventListener("click", () => {
+          mainNav.classList.toggle("open");
         });
-      });
-
-      document.addEventListener("click", function () {
-        document
-          .querySelectorAll(".nav-item.dropdown.open")
-          .forEach((d) => d.classList.remove("open"));
-      });
+      }
     </script>
   </body>
 </html>

@@ -3,72 +3,66 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Pesisir Barat</title>
+    <title>Pesisir Barat — Pariwisata</title>
 
     <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="pariwisata.css" />
-    <style>
-      .button-container {
-        display: flex;
-        flex-direction: column; /* tombol ke bawah */
-        align-items: center; /* posisikan tombol di tengah */
-        margin-top: 40px; /* jarak dari atas */
-        gap: 15px; /* jarak antar tombol */
-        padding-top: 30px;
-        padding-bottom: 50px;
-      }
 
-      .custom-btn {
-        width: 450px; /* tombol lebih lebar */
-        padding: 12px 20px;
-        border-radius: 30px; /* border radius */
-        border: 2px solid #000; /* border hitam */
-        background-color: white;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        transition: 0.3s;
-      }
+    <!-- Styles -->
+    <link rel="stylesheet" href="profil.css" />
 
-      .custom-btn:hover {
-        background-color: #f2f2f2;
-      }
-
-    </style>
+    <!-- meta for theme-color -->
     <meta name="theme-color" content="#e9caa2" />
   </head>
   <body>
+    <!-- TOP BAR / HERO -->
     <header class="hero">
-      <!-- LEFT HEADER -->
-      <div class="hero-header">
-        <img src="assets/img/logo-small.png" class="hero-logo" onclick="window.location.href='index.html'" style="cursor: pointer;" />
-        <div class="hero-text">
-          <h3>PEMERINTAHAN</h3>
-          <h4>KABUPATEN PESISIR BARAT</h4>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-top container">
+        <!-- Welcome Text (Center) -->
+        <div class="hero-content">
+          <h1 class="hero-title">SELAMAT DATANG DI WEBSITE RESMI</h1>
+          <h2 class="hero-subtitle">KABUPATEN PESISIR BARAT</h2>
+        </div>
+
+        <div class="hero-bottom">
+          <div class="official left-official">
+            <img
+              src="assets/img/bupati.png"
+              alt="bupati"
+              class="official-photo"
+            />
+          </div>
+
+          <div class="hero-center">
+            <img src="assets/img/logo.png" alt="logo" class="logo-center" onclick="window.location.href='index.html'" style="cursor: pointer;" />
+            <h1>NEGERI PARA SAI BATIN DAN ULAMA</h1>
+
+            <div class="search">
+              <input type="search" placeholder="Search..." id="searchInput" />
+              <button id="searchBtn" aria-label="search">🔍</button>
+            </div>
+          </div>
+
+          <div class="official right-official">
+            <img
+              src="assets/img/wakil.png"
+              alt="wakil"
+              class="official-photo"
+            />
+          </div>
         </div>
       </div>
-
-      <!-- CENTER TITLES -->
-      <div class="hero-center">
-    <h1>SELAMAT DATANG DI WEBSITE RESMI</h1>
-    <h2>KABUPATEN PESISIR BARAT</h2>
-
-    <div class="search">
-      <input type="search" placeholder="Search..." id="searchInput" />
-      <button id="searchBtn" aria-label="search">🔍</button>
-    </div>
-</div>
-
 
       <!-- HAMBURGER (MOBILE ONLY) -->
       <div class="hamburger" id="hamburgerBtn">☰</div>
 
       <!-- NAVIGATION -->
-      <nav class="main-nav">
+       <nav class="main-nav">
         <div class="nav-item" onclick="window.location.href='index.html'">
           BERANDA
         </div>
@@ -81,30 +75,58 @@
       </nav>
     </header>
 
-    <!-- MAIN: gunakan .container agar konten tidak mepet -->
-    <main class="container">
-      <div class="button-container">
-        <button
-          class="custom-btn"
-          onclick="window.location.href='wisata-alam.html'"
-        >
-          Wisata Alam
-        </button>
-        <button
-          class="custom-btn"
-          onclick="window.location.href='wisata-budaya.html'"
-        >
-          Wisata Budaya
-        </button>
-        <button
-          class="custom-btn"
-          onclick="window.location.href='wisata-kuliner.html'"
-        >
-          Wisata Kuliner
-        </button>
-      </div>
+    <!-- MAIN CONTENT -->
+    <main>
+        <section class="intro container" style="text-align: center; margin-bottom: 40px;">
+           <h2>PARIWISATA</h2>
+           <p class="lead">
+            Kabupaten Pesisir Barat dikenal sebagai wilayah dengan keindahan alam yang masih sangat terjaga. Garis pantai yang panjang, budaya lokal yang khas, serta keberadaan destinasi unik menjadikannya tujuan favorit bagi wisatawan yang mencari suasana tenang dan pengalaman autentik. Dari pulau eksotis, kuliner tradisional, hingga kawasan konservasi, setiap sudutnya menawarkan cerita dan pesona tersendiri.
+           </p>
+        </section>
+
+      <section class="grid container">
+        <!-- 1. Wisata Alam (gambar kiri) -->
+        <article class="card image-left">
+          <img src="assets/wisata/pulau-pisang.png" alt="Wisata Alam" />
+          <div class="card-text">
+            <h3 style="font-size: 30px;">WISATA ALAM</h3>
+            <p style="font-size: 15px;">
+              Pulau Pisang, Sebuah Harta Tersembunyi di Lampung, Si Cantik yang Memikat dengan Keindahan Pantainya.
+            </p>
+            <a href="wisata-alam.html" class="read-more">Lihat Selengkapnya...</a>
+          </div>
+        </article>
+
+        <!-- 2. Wisata Budaya (gambar kanan) -->
+        <article class="card image-right">
+          <div class="card-text">
+            <h3 style="font-size: 30px;">WISATA BUDAYA</h3>
+             <p style="font-size: 15px;">
+              Kekayaan budaya masyarakat Pesisir Barat yang mencerminkan kearifan lokal dan tradisi leluhur.
+            </p>
+            <a href="wisata-budaya.html" class="read-more">Lihat Selengkapnya...</a>
+          </div>
+
+          <img src="assets/img/budaya businjang.jpg" alt="Wisata Budaya" class="logo-img" style="width: 100%; object-fit: cover;" />
+        </article>
+
+        <!-- 3. Wisata Kuliner (gambar kiri) -->
+        <article class="card image-left">
+          <img src="assets/wisata/tempoyak.png" alt="Wisata Kuliner" />
+          <div class="card-text">
+            <h3 style="font-size: 30px;">WISATA KULINER</h3>
+             <p style="font-size: 15px;">
+              Jelajahi cita rasa khas Pesisir Barat, mulai dari Gabing, Tempoyak, hingga Seruit yang menggugah selera.
+            </p>
+            <a href="wisata-kuliner.html" class="read-more"
+              >Lihat Selengkapnya...</a
+            >
+          </div>
+        </article>
+      </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="container footer-grid">
         <!-- ABOUT -->
@@ -189,30 +211,20 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 
-      const track = document.getElementById("carouselTrack");
-      const btnNext = document.querySelector(".btn-next");
-      const btnPrev = document.querySelector(".btn-prev");
-
-      if (btnNext && track) {
-        btnNext.onclick = () => {
-          track.scrollBy({ left: 500, behavior: "smooth" });
-        };
-      }
-      if (btnPrev && track) {
-        btnPrev.onclick = () => {
-          track.scrollBy({ left: -500, behavior: "smooth" });
-        };
-      }
-
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
       // HAMBURGER MENU TOGGLE
       const hamburger = document.getElementById("hamburgerBtn");
       const mainNav = document.querySelector(".main-nav");
 
-      hamburger.addEventListener("click", () => {
-        mainNav.classList.toggle("open");
-      });
+      if (hamburger && mainNav) {
+        hamburger.addEventListener("click", () => {
+          mainNav.classList.toggle("open");
+        });
+      }
     </script>
-
   </body>
 </html>

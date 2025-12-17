@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasil Pencarian - Pesisir Barat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="profil.css">
+</head>
+<body>
+  <!-- TOP BAR / HERO -->
+  <header class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-top container">
+      <!-- Welcome Text (Center) -->
+      <div class="hero-content">
+        <h1 class="hero-title">SELAMAT DATANG DI WEBSITE RESMI</h1>
+        <h2 class="hero-subtitle">KABUPATEN PESISIR BARAT</h2>
+      </div>
+
+      <div class="hero-bottom">
+        <div class="official left-official">
+          <img
+            src="assets/img/bupati.png"
+            alt="bupati"
+            class="official-photo"
+          />
+        </div>
+
+        <div class="hero-center">
+          <img src="assets/img/logo.png" alt="logo" class="logo-center" onclick="window.location.href='index.html'" style="cursor: pointer;" />
+          <h1>NEGERI PARA SAI BATIN DAN ULAMA</h1>
+
+          <div class="search">
+            <input type="search" placeholder="Search..." id="searchInput" />
+            <button id="searchBtn" aria-label="search">🔍</button>
+          </div>
+        </div>
+
+        <div class="official right-official">
+          <img
+            src="assets/img/wakil.png"
+            alt="wakil"
+            class="official-photo"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- HAMBURGER (MOBILE ONLY) -->
+    <div class="hamburger" id="hamburgerBtn">☰</div>
+
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+      <div class="nav-item" onclick="window.location.href='index.html'">
+        BERANDA
+      </div>
+      <div class="nav-item" onclick="window.location.href='profil.html'">
+        PROFIL
+      </div>
+      <div class="nav-item" onclick="window.location.href='pariwisata.html'">
+        PARIWISATA
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container" style="padding: 40px 20px; min-height: 60vh;">
+    <div class="breadcrumb">
+      <a href="index.html">Beranda</a> &gt; <span>Hasil Pencarian</span>
+    </div>
+
+    <h1 class="page-title">Hasil Pencarian: "<span id="searchQuery"></span>"</h1>
+
+    <div id="searchResults">
+      <p>Mencari...</p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <img src="assets/img/logo-small.png" alt="logo" class="footer-logo" />
+        <h2 class="footer-title">
+          PEMERINTAHAN <br />
+          <span>KABUPATEN PESISIR BARAT</span>
+        </h2>
+        <div class="footer-address">
+          <p>Jl. Kesuma No. 1 Gedung A Lt.1 Kompleks Perkantoran Pemda</p>
+          <p>Kabupaten Pesisir Barat, Provinsi Lampung – 34874</p>
+        </div>
+      </div>
+      <div class="footer-follow">
+        <h3 class="footer-heading">IKUTI KAMI</h3>
+        <div class="social-icons">
+          <a href="#"><img src="assets/youtube.png" alt="yt" /></a>
+          <a href="#"><img src="assets/facebook.png" alt="fb" /></a>
+          <a href="#"><img src="assets/instagram.png" alt="ig" /></a>
+          <a href="#"><img src="assets/twitter.png" alt="tw" /></a>
+        </div>
+      </div>
+      <div class="footer-map">
+        <h3 class="footer-heading">LOKASI</h3>
+        <img src="assets/lokasi.png" class="map-img" alt="Map" />
+      </div>
+    </div>
+    <div class="footer-bottom" style="text-align: center">
+      © <span id="year"></span> Pemerintah Kabupaten Pesisir Barat
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      // Get search query from URL
+      const params = new URLSearchParams(window.location.search);
+      const query = params.get('q') || '';
+      document.getElementById('searchQuery').textContent = query;
+
+      if (!query) {
+        document.getElementById('searchResults').innerHTML = '<p class="no-results">Masukkan kata kunci pencarian.</p>';
+        return;
+      }
+
+      // Search across all types
+      const results = await DataManager.search(['berita', 'wisata', 'event', 'informasi'], query);
+
+      if (results.length === 0) {
+        document.getElementById('searchResults').innerHTML = '<p class="no-results">Tidak ada hasil ditemukan untuk "' + query + '"</p>';
+        return;
+      }
+
+      // Render results
+      document.getElementById('searchResults').innerHTML = results.map(item => {
+        let link = '#';
+        let typeLabel = '';
+        
+        if (item._type === 'berita') {
+          link = `detail-berita.html?id=${item.id}`;
+          typeLabel = 'Berita';
+        } else if (item._type === 'wisata') {
+          link = `detail-wisata.html?id=${item.id}`;
+          typeLabel = 'Wisata';
+        } else if (item._type === 'event') {
+          link = `detail-event.html?id=${item.id}`;
+          typeLabel = 'Event';
+        } else if (item._type === 'informasi') {
+          link = `detail-informasi.html?id=${item.id}`;
+          typeLabel = 'Informasi';
+        }
+
+        const title = item.judul || item.nama || 'Untitled';
+        const summary = item.ringkasan || item.deskripsi || '';
+
+        return `
+          <div class="search-result-item">
+            <span class="result-type">${typeLabel}</span>
+            <h3><a href="${link}">${title}</a></h3>
+            <p>${summary.substring(0, 150)}...</p>
+          </div>
+        `;
+      }).join('');
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById("hamburgerBtn");
+    const mainNav = document.querySelector(".main-nav");
+    if (hamburger && mainNav) {
+      hamburger.addEventListener("click", () => {
+        mainNav.classList.toggle("open");
+      });
+    }
+  </script>
+</body>
+</html>

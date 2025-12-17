@@ -1,0 +1,61 @@
+[
+  {
+    "id": "krakatau-beach-fun-run",
+    "nama": "Krakatau Beach Fun Run 2025",
+    "ringkasan": "Event lari pantai tahunan di pesisir Kabupaten Pesisir Barat",
+    "deskripsi": "Krakatau Beach Fun Run adalah event lari pantai tahunan yang diadakan di Kabupaten Pesisir Barat. Event ini menghadirkan kategori 5K dan 10K dengan rute menyusuri pantai yang indah.\n\nPeserta akan menikmati pemandangan laut yang spektakuler sambil berlari di atas pasir putih. Event ini juga dimeriahkan dengan berbagai pertunjukan seni dan kuliner lokal.",
+    "tanggal": "2025-08-15",
+    "waktu": "06:00 WIB",
+    "lokasi": "Pantai Labuhan Jukung, Krui",
+    "gambar": "assets/event/krakataupng.png",
+    "kategori": ["5K", "10K"],
+    "hargaTiket": {
+      "5K": "Rp150.000",
+      "10K": "Rp200.000"
+    },
+    "kontak": {
+      "instagram": "@krakataufunrun",
+      "whatsapp": "+6281234567890"
+    },
+    "linkPendaftaran": "https://example.com/register"
+  },
+  {
+    "id": "hipmi-festival",
+    "nama": "Hipmi Festival",
+    "ringkasan": "Festival kewirausahaan dan ekonomi kreatif Pesisir Barat",
+    "deskripsi": "Hipmi Festival adalah festival tahunan yang diselenggarakan oleh HIPMI Pesisir Barat untuk mempromosikan kewirausahaan dan ekonomi kreatif di daerah.\n\nFestival ini menampilkan pameran UMKM, workshop bisnis, dan pertunjukan musik lokal.",
+    "tanggal": "2025-09-20",
+    "waktu": "09:00 WIB",
+    "lokasi": "Alun-alun Krui",
+    "gambar": "assets/event/hipmi.png",
+    "kategori": ["pameran", "workshop", "musik"],
+    "hargaTiket": {
+      "umum": "Gratis"
+    },
+    "kontak": {
+      "instagram": "@hipmipesbar",
+      "whatsapp": "+6281987654321"
+    },
+    "linkPendaftaran": null
+  },
+  {
+    "id": "krui-festival",
+    "nama": "Krui Festival 2025",
+    "ringkasan": "Festival budaya dan musik tahunan Kota Krui",
+    "deskripsi": "Krui Festival adalah perayaan budaya tahunan yang menampilkan kesenian tradisional, musik modern, dan kuliner khas Pesisir Barat.\n\nFestival ini menjadi ajang promosi pariwisata dan budaya daerah kepada wisatawan domestik maupun mancanegara.",
+    "tanggal": "2025-12-01",
+    "waktu": "10:00 WIB",
+    "lokasi": "Pantai Tanjung Setia",
+    "gambar": "assets/event/hipmi.png",
+    "kategori": ["budaya", "musik", "kuliner"],
+    "hargaTiket": {
+      "vip": "Rp100.000",
+      "reguler": "Rp50.000"
+    },
+    "kontak": {
+      "instagram": "@kruifestival",
+      "whatsapp": "+6281555666777"
+    },
+    "linkPendaftaran": "https://example.com/krui-festival"
+  }
+]

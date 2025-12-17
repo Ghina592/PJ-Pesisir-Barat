@@ -1,0 +1,159 @@
+[
+  {
+    "id": "pulau-pisang",
+    "nama": "Pulau Pisang",
+    "kategori": "wisata-alam",
+    "ringkasan": "Sebuah Harta Tersembunyi di Lampung, Si Cantik yang Memikat dengan Keindahan Pantainya",
+    "deskripsi": "Pulau Pisang memiliki dengan hamparan pasir putih yang bersih, laut berwarna hijau-tosca, serta deretan pohon kelapa yang menari di tepi pantai—seolah mengundang kamu untuk berhenti sejenak dari keramaian kota.\n\nTerumbu karang dan kehidupan lautnya masih cukup alami, menjadikannya pilihan bagus untuk snorkeling atau hanya sekedar menikmati pemandangan laut yang tenang.",
+    "gambarHero": "assets/wisata/pulau-pisang.png",
+    "galeri": [
+      "assets/pulau-pisang-1.jpg",
+      "assets/pulau-pisang-2.jpg"
+    ],
+    "estimasiBiaya": {
+      "transport": "Rp150.000 - Rp250.000 (bus/minivan 6-7 jam)",
+      "kapal": "Rp250.000 per kapal atau Rp50.000 per orang",
+      "penginapan": "Rp150.000 - Rp300.000 per malam",
+      "makanMotor": "Rp100.000 - Rp150.000 per hari",
+      "total": "Rp500.000 - Rp1.000.000 per orang (2 hari 1 malam)"
+    },
+    "kontak": {
+      "instagram": "@aerotravelindonesia",
+      "whatsapp": "+6281324641414"
+    },
+    "lokasi": "https://maps.app.goo.gl/FxXCp6qUCm1Cl3UL8"
+  },
+  {
+    "id": "air-terjun-kuripan",
+    "nama": "Air Terjun Kuripan",
+    "kategori": "wisata-alam",
+    "ringkasan": "Permata Tersembunyi di Tengah Hutan Bukit Barisan",
+    "deskripsi": "Air Terjun Kuripan adalah salah satu destinasi wisata alam tersembunyi di Kabupaten Pesisir Barat. Terletak di tengah hutan Bukit Barisan, air terjun ini menawarkan pemandangan yang spektakuler dengan air yang jernih dan sejuk.",
+    "gambarHero": "assets/wisata/airterjun.png",
+    "galeri": [
+      "assets/air-terjun-1.jpg"
+    ],
+    "estimasiBiaya": {
+      "transport": "Rp50.000 - Rp100.000",
+      "tiketMasuk": "Rp10.000",
+      "total": "Rp100.000 - Rp200.000"
+    },
+    "kontak": {
+      "instagram": "@wisatapesbar",
+      "whatsapp": "+6281234567890"
+    },
+    "lokasi": "https://maps.app.goo.gl/example"
+  },
+  {
+    "id": "taman-nasional",
+    "nama": "Taman Nasional Bukit Barisan Selatan",
+    "kategori": "wisata-alam",
+    "ringkasan": "Surga Gajah Sumatera di Ujung Lampung",
+    "deskripsi": "Taman Nasional Bukit Barisan Selatan merupakan rumah bagi berbagai satwa langka termasuk gajah Sumatera, harimau Sumatera, dan badak Sumatera. Wisatawan dapat menikmati trekking, safari, dan pengamatan satwa liar.",
+    "gambarHero": "assets/wisata/bukitbarisan.png",
+    "galeri": [
+      "assets/taman-nasional-1.jpg",
+      "assets/taman-nasional-2.jpg"
+    ],
+    "estimasiBiaya": {
+      "tiketMasuk": "Rp20.000",
+      "guide": "Rp200.000 - Rp500.000",
+      "total": "Rp300.000 - Rp700.000"
+    },
+    "kontak": {
+      "instagram": "@tnbbs_official",
+      "whatsapp": "+6281987654321"
+    },
+    "lokasi": "https://maps.app.goo.gl/example2"
+  },
+  {
+    "id": "gabing",
+    "nama": "Gabing",
+    "kategori": "wisata-kuliner",
+    "ringkasan": "Kuliner Legendaris Pesisir Barat",
+    "deskripsi": "Gabing adalah makanan khas Pesisir Barat yang wajib dicoba. Terbuat dari bahan-bahan lokal dengan resep turun temurun yang kaya rempah.",
+    "gambarHero": "assets/wisata/gabing.png",
+    "galeri": [],
+    "estimasiBiaya": {
+      "tiketMasuk": "Gratis",
+      "total": "Rp50.000 - Rp100.000"
+    },
+    "kontak": {
+      "instagram": "@wisatapesbar",
+      "whatsapp": "+6281234567890"
+    },
+    "lokasi": "https://maps.app.goo.gl/example3"
+  },
+  {
+    "id": "penangkaran-penyu",
+    "nama": "Penangkaran Penyu",
+    "kategori": "wisata-budaya",
+    "ringkasan": "Konservasi Penyu di Pantai Pesisir Barat",
+    "deskripsi": "Penangkaran Penyu di Pesisir Barat adalah tempat konservasi penyu yang memungkinkan pengunjung untuk belajar tentang siklus hidup penyu dan berpartisipasi dalam pelepasan tukik ke laut.",
+    "gambarHero": "assets/wisata/pulau-pisang.png",
+    "galeri": [],
+    "estimasiBiaya": {
+      "donasi": "Rp25.000 - Rp50.000",
+      "total": "Rp50.000 - Rp100.000"
+    },
+    "kontak": {
+      "instagram": "@penyupesbar",
+      "whatsapp": "+6281111222333"
+    },
+    "lokasi": "https://maps.app.goo.gl/example4"
+  },
+  {
+    "id": "river-tubing",
+    "nama": "River Tubing",
+    "kategori": "wisata-alam",
+    "ringkasan": "Petualangan Seru di Sungai Pesisir Barat",
+    "deskripsi": "River tubing adalah aktivitas wisata petualangan yang populer di Pesisir Barat. Pengunjung dapat menikmati sensasi menyusuri sungai dengan menggunakan ban pelampung sambil menikmati keindahan alam sekitar.",
+    "gambarHero": "assets/wisata/airterjun.png",
+    "galeri": [],
+    "estimasiBiaya": {
+      "paket": "Rp75.000 - Rp150.000 per orang",
+      "total": "Rp75.000 - Rp150.000"
+    },
+    "kontak": {
+      "instagram": "@rivertubingkrui",
+      "whatsapp": "+6281444555666"
+    },
+    "lokasi": "https://maps.app.goo.gl/example5"
+  },
+  {
+    "id": "tempoyak",
+    "nama": "Tempoyak",
+    "kategori": "wisata-kuliner",
+    "ringkasan": "Fermentasi Durian yang Bikin Lidah Bergoyang",
+    "deskripsi": "Tempoyak adalah makanan khas Lampung yang terbuat dari fermentasi durian. Rasanya yang khas dan aromanya yang kuat menjadikannya kuliner favorit warga Pesisir Barat. Sekali cocok, susah buat move on!",
+    "gambarHero": "assets/wisata/tempoyak.png",
+    "galeri": [],
+    "estimasiBiaya": {
+      "porsi": "Rp15.000 - Rp30.000",
+      "total": "Rp15.000 - Rp30.000"
+    },
+    "kontak": {
+      "instagram": "@kulinerpesbar",
+      "whatsapp": "+6281234567890"
+    },
+    "lokasi": "https://maps.app.goo.gl/example-tempoyak"
+  },
+  {
+    "id": "seruit",
+    "nama": "Seruit",
+    "kategori": "wisata-kuliner",
+    "ringkasan": "Lambang Kebersamaan di Setiap Suapan",
+    "deskripsi": "Seruit adalah ikan bakar khas Lampung yang disajikan dengan sambal terasi dan potongan mangga muda. Makanan ini melambangkan kebersamaan dan kehangatan masyarakat Pesisir Barat.",
+    "gambarHero": "assets/wisata/seruit.png",
+    "galeri": [],
+    "estimasiBiaya": {
+      "porsi": "Rp25.000 - Rp50.000",
+      "total": "Rp25.000 - Rp50.000"
+    },
+    "kontak": {
+      "instagram": "@kulinerpesbar",
+      "whatsapp": "+6281234567890"
+    },
+    "lokasi": "https://maps.app.goo.gl/example-seruit"
+  }
+]

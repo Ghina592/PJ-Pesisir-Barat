@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Detail Informasi - Pesisir Barat</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <meta name="theme-color" content="#e9caa2" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-header">
+        <img src="assets/img/logo-small.png" class="hero-logo" onclick="window.location.href='index.html'" style="cursor: pointer;" />
+        <div class="hero-text">
+          <h3>PEMERINTAHAN</h3>
+          <h4>KABUPATEN PESISIR BARAT</h4>
+        </div>
+      </div>
+
+      <div class="hero-center">
+        <h1>SELAMAT DATANG DI WEBSITE RESMI</h1>
+        <h2>KABUPATEN PESISIR BARAT</h2>
+      </div>
+
+      <div class="hamburger" id="hamburgerBtn">☰</div>
+
+      <nav class="main-nav">
+        <div class="nav-item" onclick="window.location.href='index.html'">BERANDA</div>
+        <div class="nav-item" onclick="window.location.href='profil.html'">PROFIL</div>
+        <div class="nav-item" onclick="window.location.href='pariwisata.html'">PARIWISATA</div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="index.html">BERANDA</a> &gt; 
+        <a href="informasi.html">INFORMASI</a> &gt; 
+        <span>DETAIL</span>
+      </nav>
+
+      <div class="page-layout">
+        <!-- Main Content -->
+        <article class="main-content detail-article">
+          <span id="infoCategory" class="article-category"></span>
+          <h1 id="infoTitle" class="article-title">Loading...</h1>
+          
+          <div class="article-meta">
+            <span><img src="assets/icon-date.png" alt="" /> <span id="infoDate"></span></span>
+          </div>
+
+          <div id="infoContent" class="article-content">
+            <!-- Content will be loaded here -->
+          </div>
+
+          <div id="infoAttachment" class="info-attachment" style="display:none;">
+            <h3>Lampiran</h3>
+            <a href="#" id="attachmentLink" class="btn btn-secondary" target="_blank">Download Lampiran</a>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="sidebar-card">
+            <h3>INFORMASI LAINNYA</h3>
+            <ul id="otherInfo" class="sidebar-list">
+              <!-- Other info will be loaded here -->
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-about">
+          <img src="assets/img/logo-small.png" alt="logo" class="footer-logo" />
+          <h2 class="footer-title">PEMERINTAHAN <br /><span>KABUPATEN PESISIR BARAT</span></h2>
+          <div class="footer-address">
+            <p><img src="assets/map.png" /> Jl. Kesuma No. 1 Gedung A Lt.1 Kompleks Perkantoran Pemda, Kec. Pesisir Tengah</p>
+            <p>Kabupaten Pesisir Barat, Provinsi Lampung – Indonesia 34874</p>
+          </div>
+        </div>
+
+        <div class="footer-follow">
+          <h3 class="footer-heading">IKUTI KAMI</h3>
+          <div class="social-icons">
+            <a href="#"><img src="assets/youtube.png" alt="yt" /></a>
+            <a href="#"><img src="assets/facebook.png" alt="fb" /></a>
+            <a href="#"><img src="assets/instagram.png" alt="ig" /></a>
+            <a href="#"><img src="assets/twitter.png" alt="tw" /></a>
+          </div>
+        </div>
+
+        <div class="footer-map">
+          <h3 class="footer-heading">LOKASI</h3>
+          <img src="assets/lokasi.png" class="map-img" alt="Map" />
+        </div>
+      </div>
+
+      <div class="footer-bottom" style="text-align: center">
+        © <span id="year"></span> Pemerintah Kabupaten Pesisir Barat — All rights reserved.
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', async function() {
+        const id = getUrlParam('id');
+        if (!id) {
+          window.location.href = 'informasi.html';
+          return;
+        }
+
+        const info = await DataManager.getById('informasi', id);
+        if (!info) {
+          document.querySelector('.detail-article').innerHTML = '<p>Informasi tidak ditemukan.</p>';
+          return;
+        }
+
+        // Populate info
+        document.getElementById('infoCategory').textContent = info.kategori?.toUpperCase() || 'UMUM';
+        document.getElementById('infoTitle').textContent = info.judul;
+        document.getElementById('infoDate').textContent = formatDateLong(info.tanggal);
+        
+        // Format content
+        const content = info.konten.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+        document.getElementById('infoContent').innerHTML = content;
+
+        // Attachment
+        if (info.lampiran) {
+          document.getElementById('infoAttachment').style.display = 'block';
+          document.getElementById('attachmentLink').href = info.lampiran;
+        }
+
+        // Update page title
+        document.title = `${info.judul} - Pesisir Barat`;
+
+        // Load other informasi
+        const allInfo = await DataManager.load('informasi');
+        const others = allInfo.filter(i => i.id !== id).slice(0, 5);
+        const othersList = document.getElementById('otherInfo');
+        if (othersList) {
+          othersList.innerHTML = others.map(i => `
+            <li><a href="detail-informasi.html?id=${i.id}">${i.judul}</a></li>
+          `).join('');
+        }
+      });
+    </script>
+  </body>
+</html>

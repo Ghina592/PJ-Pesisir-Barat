@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Pesisir Barat — Wisata Kuliner</title>
+    <title>Pesisir Barat — Detail Wisata</title>
 
     <!-- Fonts -->
     <link
@@ -77,12 +77,9 @@
 
     <!-- MAIN CONTENT -->
     <main>
-        <div class="container" style="margin-top: 40px;">
-            <h1 class="page-title" style="text-align: center; color: #0c4a6e;">WISATA KULINER</h1>
-            <div class="wisata-list-container" id="wisataList">
-                <!-- Cards will be loaded dynamically -->
-                <p>Loading...</p>
-            </div>
+        <div class="detail-container" id="wisataDetail">
+            <!-- Content will be loaded dynamically -->
+            <p>Loading...</p>
         </div>
     </main>
 
@@ -100,15 +97,15 @@
 
           <div class="footer-address">
             <p>
-              <img src="assets/icons/map.png" />
+              <img src="assets/map.png" />
               Jl. Kesuma No. 1 Gedung A Lt.1 Kompleks Perkantoran Pemda, Kec.
               Pesisir Tengah
             </p>
             <p>Kabupaten Pesisir Barat, Provinsi Lampung – Indonesia 34874</p>
 
-            <p><img src="assets/icons/wa.png" alt="" /> +62 853-6998-9990</p>
+            <p><img src="assets/wa.png" alt="" /> +62 853-6998-9990</p>
             <p>
-              <img src="assets/icons/email.png" style="width: 25px" alt="" />
+              <img src="assets/email.png" style="width: 25px" alt="" />
               admin@pesisirbaratkab.go.id
             </p>
           </div>
@@ -126,29 +123,29 @@
           </div>
 
           <p class="link-website">
-            <img src="assets/icons/web.png" alt="" /> https://pesisirbaratkab.go.id
+            <img src="assets/web.png" alt="" /> https://pesisirbaratkab.go.id
           </p>
 
           <h3 class="footer-heading">STATISTIK PENGUNJUNG</h3>
 
           <div class="visitor-stats">
             <div>
-              <img src="assets/icons/group.png" alt="" />
+              <img src="assets/group.png" alt="" />
               <p>Total</p>
               <span>31,339</span>
             </div>
             <div>
-              <img src="assets/icons/eye.png" alt="" />
+              <img src="assets/eye.png" alt="" />
               <p>Hari Ini</p>
               <span>79</span>
             </div>
             <div>
-              <img src="assets/icons/calender.png" alt="" />
+              <img src="assets/calender.png" alt="" />
               <p>Bulan Ini</p>
               <span>405</span>
             </div>
             <div>
-              <img src="assets/icons/calender-solid.png" alt="" />
+              <img src="assets/calender-solid.png" alt="" />
               <p>Tahun Ini</p>
               <span>55,668</span>
             </div>
@@ -172,24 +169,95 @@
     <script src="script.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', async function() {
-        // Load wisata kuliner only
-        const allWisata = await DataManager.load('wisata');
-        const wisataKuliner = allWisata.filter(w => w.kategori === 'wisata-kuliner');
-        
-        const container = document.getElementById('wisataList');
-        if (container && wisataKuliner.length > 0) {
-          container.innerHTML = wisataKuliner.map(w => `
-            <a href="detail-wisata.html?id=${w.id}" style="text-decoration: none; color: inherit; display: block; width: 100%;">
-              <div class="wisata-card">
-                <img src="${w.gambarHero}" alt="${w.nama}" />
-                <h3 class="wisata-card-title">${w.nama}</h3>
-                <div class="wisata-card-desc">${w.ringkasan}</div>
-              </div>
-            </a>
-          `).join('');
-        } else if (container) {
-          container.innerHTML = '<p>Belum ada data wisata kuliner.</p>';
+        const id = getUrlParam('id');
+        if (!id) {
+          document.getElementById('wisataDetail').innerHTML = '<p>ID wisata tidak ditemukan.</p>';
+          return;
         }
+
+        const wisata = await DataManager.getById('wisata', id);
+        if (!wisata) {
+          document.getElementById('wisataDetail').innerHTML = '<p>Wisata tidak ditemukan.</p>';
+          return;
+        }
+
+        // Build cost list HTML
+        let costHtml = '';
+        if (wisata.estimasiBiaya) {
+          costHtml = '<ul>';
+          for (const [key, value] of Object.entries(wisata.estimasiBiaya)) {
+            if (key !== 'total') {
+              costHtml += `<li><strong>${key}:</strong> ${value}</li>`;
+            }
+          }
+          costHtml += '</ul>';
+          if (wisata.estimasiBiaya.total) {
+            costHtml += `<p><strong>Total estimasi:</strong> ${wisata.estimasiBiaya.total}</p>`;
+          }
+        }
+
+        // Build small slidable gallery
+        const allImages = [wisata.gambarHero, ...(wisata.galeri || [])].filter(Boolean);
+        let galleryHtml = '';
+        if (allImages.length > 0) {
+          galleryHtml = `
+            <div class="gallery-section" style="margin: 30px 0;">
+              <h3 style="margin-bottom: 15px; color: #0c4a6e;">Galeri</h3>
+              <div class="gallery-wrapper" style="position: relative;">
+                <div class="gallery-track" id="galleryTrack" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; gap: 10px; padding: 10px 0;">
+                  ${allImages.map((img, i) => `
+                    <div class="gallery-thumb" style="flex: 0 0 150px; scroll-snap-align: start; cursor: pointer;" onclick="window.gallery && window.gallery.open(${JSON.stringify(allImages)}, ${i})">
+                      <img src="${img}" alt="Gallery ${i+1}" style="width: 150px; height: 100px; object-fit: cover; border-radius: 8px; border: 2px solid #0c4a6e;" />
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+              <p style="text-align: center; font-size: 12px; color: #888; margin-top: 10px;">Klik gambar untuk memperbesar</p>
+            </div>
+          `;
+        }
+
+        // Render content - cleaner layout like original
+        document.getElementById('wisataDetail').innerHTML = `
+          <img src="${wisata.gambarHero}" alt="${wisata.nama}" class="detail-hero-img" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;" />
+          
+          <div class="detail-title" style="font-size: 28px; font-weight: bold; color: #0c4a6e; text-align: center; margin-bottom: 10px;">${wisata.nama}</div>
+          
+          <div class="detail-ringkasan" style="font-style: italic; text-align: center; color: #555; margin-bottom: 25px; font-size: 16px;">
+            ${wisata.ringkasan}
+          </div>
+
+          <div class="detail-desc" style="line-height: 1.8; margin-bottom: 30px;">
+            ${wisata.deskripsi.replace(/\n\n/g, '</p><p style="margin-bottom: 15px;">')}
+          </div>
+
+          ${galleryHtml}
+
+          <div class="detail-info" style="background: #f9f9f9; padding: 20px; border-radius: 12px; margin-top: 20px;">
+            <h3 style="color: #0c4a6e; margin-bottom: 15px;">Estimasi Biaya</h3>
+            ${costHtml}
+            
+            <h3 style="color: #0c4a6e; margin-top: 25px; margin-bottom: 15px;">Kontak</h3>
+            <p style="margin-bottom: 8px;">
+              <img src="assets/instagram.png" alt="" style="width:20px; vertical-align:middle; margin-right:8px" />
+              ${wisata.kontak?.instagram || '-'}
+            </p>
+            <p style="margin-bottom: 8px;">
+              <img src="assets/icons/wa.png" alt="" style="width:20px; vertical-align:middle; margin-right:8px" />
+              ${wisata.kontak?.whatsapp || '-'}
+            </p>
+            
+            <h3 style="color: #0c4a6e; margin-top: 25px; margin-bottom: 15px;">Lokasi</h3>
+            <p>
+              <a href="${wisata.lokasi}" target="_blank" style="display: inline-block; background: #0c4a6e; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none;">
+                📍 Buka di Google Maps
+              </a>
+            </p>
+          </div>
+        `;
+
+        // Update page title
+        document.title = `${wisata.nama} - Pesisir Barat`;
       });
 
       // Hamburger menu
@@ -203,4 +271,3 @@
     </script>
   </body>
 </html>
-
