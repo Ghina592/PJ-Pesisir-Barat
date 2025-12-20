@@ -11,7 +11,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="profil.css" />
+      <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="footer.css" />
     <meta name="theme-color" content="#e9caa2" />
   </head>
   <body>
@@ -313,15 +315,14 @@
 
           <div class="footer-address">
             <p>
-              <img src="assets/map.png" />
               Jl. Kesuma No. 1 Gedung A Lt.1 Kompleks Perkantoran Pemda, Kec.
               Pesisir Tengah
             </p>
             <p>Kabupaten Pesisir Barat, Provinsi Lampung – Indonesia 34874</p>
 
-            <p><img src="assets/wa.png" alt="" /> +62 853-6998-9990</p>
+            <p><a href="https://api.whatsapp.com/send?phone=6285369989990&text=Tabik%20Pun,%20Perkenalkan%20nama%20saya%20.........,%20......%3F" target="_blank"><img src="assets/icons/wa.png" alt="" /> +62 853-6998-9990</a></p>
             <p>
-              <img src="assets/email.png" style="width: 25px" alt="" />
+              <img src="assets/icons/email.png" style="width: 25px" alt="" />
               admin@pesisirbaratkab.go.id
             </p>
           </div>
@@ -332,38 +333,38 @@
           <h3 class="footer-heading">IKUTI KAMI</h3>
 
           <div class="social-icons">
-            <a href="#"><img src="assets/youtube.png" alt="yt" /></a>
-            <a href="#"><img src="assets/facebook.png" alt="fb" /></a>
-            <a href="#"><img src="assets/instagram.png" alt="ig" /></a>
-            <a href="#"><img src="assets/twitter.png" alt="tw" /></a>
+            <a href="https://www.youtube.com/@pemkabpesisirbarat" target="_blank" title="YouTube"><img src="assets/youtube.png" alt="YouTube" /></a>
+            <a href="https://www.facebook.com/diskominfokpb" target="_blank" title="Facebook"><img src="assets/facebook.png" alt="Facebook" /></a>
+            <a href="https://www.instagram.com/pemkabpesisirbarat/" target="_blank" title="Instagram"><img src="assets/instagram.png" alt="Instagram" /></a>
+            <a href="https://x.com/DiskominfoKPB" target="_blank" title="X (Twitter)"><img src="assets/twitter.png" alt="X" /></a>
           </div>
 
           <p class="link-website">
-            <img src="assets/web.png" alt="" /> https://pesisirbaratkab.go.id
+            <img src="assets/icons/web.png" alt="" /> <a href="https://pesisirbaratkab.go.id" target="_blank">https://pesisirbaratkab.go.id</a>
           </p>
 
           <h3 class="footer-heading">STATISTIK PENGUNJUNG</h3>
 
           <div class="visitor-stats">
             <div>
-              <img src="assets/group.png" alt="" />
+              <img src="assets/icons/group.png" alt="" />
               <p>Total</p>
-              <span>31,339</span>
+              <span id="stat-total">467,080</span>
             </div>
             <div>
-              <img src="assets/eye.png" alt="" />
+              <img src="assets/icons/eye.png" alt="" />
               <p>Hari Ini</p>
-              <span>79</span>
+              <span id="stat-today">34</span>
             </div>
             <div>
-              <img src="assets/calender.png" alt="" />
+              <img src="assets/icons/calender.png" alt="" />
               <p>Bulan Ini</p>
-              <span>405</span>
+              <span id="stat-month">892</span>
             </div>
             <div>
-              <img src="assets/calender-solid.png" alt="" />
+              <img src="assets/icons/calender-solid.png" alt="" />
               <p>Tahun Ini</p>
-              <span>55,668</span>
+              <span id="stat-year">6,809</span>
             </div>
           </div>
         </div>
@@ -371,7 +372,9 @@
         <!-- MAP -->
         <div class="footer-map">
           <h3 class="footer-heading">LOKASI</h3>
-          <img src="assets/lokasi.png" class="map-img" alt="Map" />
+          <a href="https://maps.app.goo.gl/ZBy4RNMjZuUAs1yg7" target="_blank" title="Lihat di Google Maps">
+            <img src="assets/lokasi.png" class="map-img" alt="Map" />
+          </a>
         </div>
       </div>
 
@@ -383,6 +386,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="visitor-stats.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', async function() {
         // Load events dynamically

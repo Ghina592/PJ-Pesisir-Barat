@@ -1,0 +1,413 @@
+/* =========================================
+   HEADER / HERO STYLES - Match Screenshot 2
+   ========================================= */
+
+/* --- HERO CONTAINER --- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: url("assets/img/hero.png") center/cover no-repeat;
+  color: #fff;
+  z-index: 100;
+}
+
+/* --- OVERLAY (Dark filter) --- */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+/* --- HERO TOP CONTAINER --- */
+.hero-top {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px !important;
+}
+
+/* Override container restrictions for hero-top */
+.hero-top.container {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* =========================================
+   BREADCRUMB - Consistent Positioning
+   ========================================= */
+.breadcrumb {
+  padding: 15px 18px;
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+  max-width: var(--container, 1200px);
+  margin: 0 auto;
+}
+
+.breadcrumb a {
+  color: #0c4a6e;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: #333;
+  font-weight: 600;
+}
+
+/* --- WELCOME TEXT (Top) --- */
+.hero-content {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.hero-title {
+  font-family: "Cinzel", serif;
+  font-size: 28px;
+  font-weight: 700;
+  font-style: italic;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffd889;
+  margin: 5px 0 0;
+  letter-spacing: 1px;
+}
+
+/* --- HERO BOTTOM (Officials + Center) --- */
+.hero-bottom {
+  position: absolute;
+  bottom: 75px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0;
+  z-index: 2;
+}
+
+/* --- OFFICIALS (Bupati / Wakil) --- */
+.official {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 160px;
+}
+
+/* Position officials at screen edges */
+.left-official {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.right-official {
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.official-photo {
+  width: 140px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+/* Name tags under officials */
+.official::after {
+  content: attr(data-name);
+  display: block;
+  background: linear-gradient(135deg, #1a9cb8 0%, #06586b 100%);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* --- HERO CENTER (Logo + Slogan + Search) --- */
+.hero-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  padding-bottom: 0;
+}
+
+.logo-center {
+  width: 70px;
+  height: auto;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.logo-center:hover {
+  transform: scale(1.05);
+}
+
+/* Slogan text */
+.hero-center h1 {
+  font-family: "Cinzel", serif;
+  font-size: 18px;
+  font-weight: 700;
+  font-style: italic;
+  color: #ffd889;
+  margin: 0 0 12px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  letter-spacing: 2px;
+}
+
+/* --- SEARCH BAR --- */
+.search {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  padding: 4px 12px;
+  width: 350px;
+  max-width: 90%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  color: #333;
+  padding: 6px 8px;
+}
+
+.search input::placeholder {
+  color: #888;
+}
+
+.search button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #06586b;
+  padding: 4px;
+}
+
+.search button:hover {
+  color: #1a9cb8;
+}
+
+/* --- NAVIGATION BAR --- */
+.main-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: rgba(6, 88, 107, 0.95);
+  z-index: 100;
+}
+
+.nav-item {
+  flex: 1;
+  max-width: 350px;
+  text-align: center;
+  padding: 16px 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.nav-item:hover {
+  background: rgba(4, 64, 80, 0.95);
+}
+
+/* Dropdown */
+.nav-item.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  padding: 16px 0;
+  width: 100%;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(6, 88, 107, 0.98);
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  z-index: 9999;
+}
+
+.nav-item.dropdown:hover .dropdown-menu,
+.nav-item.dropdown.open .dropdown-menu {
+  display: flex;
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu .nav-item {
+  padding: 12px 20px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* --- HAMBURGER (Mobile) --- */
+.hamburger {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 101;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* =========================================
+   RESPONSIVE - Mobile
+   ========================================= */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 420px;
+    padding-bottom: 55px;
+  }
+
+  .hero-top {
+    padding-top: 50px;
+  }
+
+  .hero-title {
+    font-size: 18px;
+    padding: 0 15px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+
+  .hero-bottom {
+    position: relative;
+    bottom: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px 15px;
+  }
+
+  .official {
+    width: 100px;
+  }
+
+  .official-photo {
+    width: 90px;
+  }
+
+  .hero-center {
+    order: -1;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .hero-center h1 {
+    font-size: 14px;
+  }
+
+  .logo-center {
+    width: 50px;
+  }
+
+  .search {
+    width: 85%;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 55px;
+    bottom: auto;
+    right: 0;
+    left: auto;
+    width: 220px;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s;
+    box-shadow: -3px 0 10px rgba(0,0,0,0.2);
+  }
+
+  .main-nav.open {
+    transform: translateX(0);
+  }
+
+  .nav-item {
+    text-align: left;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .dropbtn {
+    text-align: left;
+    padding: 14px 20px;
+  }
+
+  .dropdown-menu {
+    position: relative;
+    bottom: auto;
+    background: rgba(0,0,0,0.1);
+    box-shadow: none;
+  }
+}
