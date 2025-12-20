@@ -280,6 +280,8 @@
   top: 100%;
   left: 0;
   width: 100%;
+  margin-top: 0;
+  padding: 0;
   background: rgba(6, 88, 107, 0.98);
   flex-direction: column;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);

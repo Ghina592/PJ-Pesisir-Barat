@@ -18,17 +18,7 @@ body {
   margin-top: 0 !important;
 }
 
-/* Override orange background at top with hero-matching color */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50px;
-  background: linear-gradient(180deg, #1a5a6e 0%, #2a7a8e 100%);
-  z-index: 0;
-}
+/* Blue gradient bar removed - was causing scroll follow issue */
 
 .hero {
   margin-top: 0 !important;
