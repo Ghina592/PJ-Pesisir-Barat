@@ -7,8 +7,10 @@
     "deskripsi": "Pulau Pisang memiliki dengan hamparan pasir putih yang bersih, laut berwarna hijau-tosca, serta deretan pohon kelapa yang menari di tepi pantai—seolah mengundang kamu untuk berhenti sejenak dari keramaian kota.\n\nTerumbu karang dan kehidupan lautnya masih cukup alami, menjadikannya pilihan bagus untuk snorkeling atau hanya sekedar menikmati pemandangan laut yang tenang.",
     "gambarHero": "assets/wisata/pulau-pisang.png",
     "galeri": [
-      "assets/pulau-pisang-1.jpg",
-      "assets/pulau-pisang-2.jpg"
+      "assets/wisata/pulau-pisang-2.png",
+      "assets/wisata/pulau-pisang-3.png",
+      "assets/wisata/airterjun.png",
+      "assets/wisata/bukitbarisan.png"
     ],
     "estimasiBiaya": {
       "transport": "Rp150.000 - Rp250.000 (bus/minivan 6-7 jam)",
@@ -19,7 +21,9 @@
     },
     "kontak": {
       "instagram": "@aerotravelindonesia",
-      "whatsapp": "+6281324641414"
+      "instagramUrl": "https://www.instagram.com/aerotravelindonesia/",
+      "whatsapp": "+6281324641414",
+      "whatsappUrl": "https://api.whatsapp.com/send/?phone=%2B6281324641414&text&type=phone_number&app_absent=0"
     },
     "lokasi": "https://maps.app.goo.gl/2qRSvFDxdsiD6D4S6"
   },
@@ -31,7 +35,8 @@
     "deskripsi": "Air Terjun Kuripan adalah salah satu destinasi wisata alam tersembunyi di Kabupaten Pesisir Barat. Terletak di tengah hutan Bukit Barisan, air terjun ini menawarkan pemandangan yang spektakuler dengan air yang jernih dan sejuk.",
     "gambarHero": "assets/wisata/airterjun.png",
     "galeri": [
-      "assets/air-terjun-1.jpg"
+      "assets/wisata/pulau-pisang.png",
+      "assets/wisata/tempoyak.png"
     ],
     "estimasiBiaya": {
       "transport": "Rp50.000 - Rp100.000",
@@ -52,8 +57,8 @@
     "deskripsi": "Taman Nasional Bukit Barisan Selatan merupakan rumah bagi berbagai satwa langka termasuk gajah Sumatera, harimau Sumatera, dan badak Sumatera. Wisatawan dapat menikmati trekking, safari, dan pengamatan satwa liar.",
     "gambarHero": "assets/wisata/bukitbarisan.png",
     "galeri": [
-      "assets/taman-nasional-1.jpg",
-      "assets/taman-nasional-2.jpg"
+      "assets/wisata/gabing.png",
+      "assets/wisata/seruit.png"
     ],
     "estimasiBiaya": {
       "tiketMasuk": "Rp20.000",

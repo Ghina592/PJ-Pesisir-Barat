@@ -479,6 +479,17 @@ function formatDateLong(dateString) {
   });
 }
 
+/**
+ * Update breadcrumb title dynamically based on content title
+ * @param {string} title - The title to display in breadcrumb
+ */
+function updateBreadcrumbTitle(title) {
+  const breadcrumb = document.querySelector('.breadcrumb span:last-child');
+  if (breadcrumb) {
+    breadcrumb.textContent = title.toUpperCase();
+  }
+}
+
 // =============================================================================
 // INITIALIZE ON DOM READY
 // =============================================================================
