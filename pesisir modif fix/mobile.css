@@ -1,0 +1,983 @@
+/* ===========================================
+   MOBILE.CSS - Centralized Mobile Responsive
+   Pesisir Barat Website
+   Load LAST to override all other CSS files
+   Breakpoints: 768px (tablet) & 420px (small phone)
+   =========================================== */
+
+/* ===========================================
+   TABLET/MOBILE BREAKPOINT (max-width: 768px)
+   =========================================== */
+@media (max-width: 768px) {
+  
+  /* --- HAMBURGER MENU - HIDDEN (Nav bar always visible) --- */
+  .hamburger {
+    display: none !important;
+  }
+
+  /* --- NAVIGATION MOBILE (Bottom bar, always visible) --- */
+  .main-nav {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    background: rgba(6, 88, 107, 0.95) !important;
+    transform: none !important;
+    z-index: 100 !important;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .main-nav.open {
+    transform: none !important;
+  }
+
+  /* --- NAVIGATION ITEMS - FORCE THIN PADDING --- */
+  .nav-item,
+  .main-nav .nav-item,
+  nav.main-nav .nav-item,
+  header .main-nav .nav-item,
+  .hero .main-nav .nav-item {
+    flex: 1 !important;
+    text-align: center !important;
+    padding: 8px 5px !important;
+    font-size: 11px !important;
+    border-bottom: none !important;
+    max-width: none !important;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-item.dropdown {
+    flex-direction: column;
+    padding: 0 !important;
+  }
+
+  .dropbtn,
+  .main-nav .dropbtn,
+  nav.main-nav .dropbtn,
+  header .main-nav .dropbtn,
+  .hero .main-nav .dropbtn {
+    text-align: center !important;
+    padding: 8px 5px !important;
+    font-size: 11px !important;
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: rgba(6, 88, 107, 0.98) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+  }
+
+  .dropdown-menu .nav-item {
+    padding: 10px 15px !important;
+    font-size: 11px;
+  }
+
+  /* Click-only dropdown (no hover) */
+  .nav-item.dropdown .dropdown-menu {
+    display: none !important;
+  }
+
+  .nav-item.dropdown.open .dropdown-menu {
+    display: flex !important;
+  }
+
+  /* Dropdown menu items - override header-profil.css */
+  .dropdown-menu .nav-item,
+  .main-nav .dropdown-menu .nav-item {
+    padding: 10px 15px !important;
+    font-size: 11px !important;
+    flex: none !important;
+    text-align: left !important;
+  }
+
+  /* --- NUCLEAR OPTION: FORCE NAV ITEM HEIGHT --- */
+  /* Updated to match 0-3-0 specificity of the top block */
+  .hero .main-nav .nav-item,
+  .hero .main-nav .dropbtn,
+  .hero .main-nav .dropdown-trigger,
+  .hero .main-nav .dropdown-link,
+  .main-nav .nav-item {
+    height: 40px !important; /* FIXED HEIGHT for uniformity */
+    min-height: 40px !important;
+    line-height: normal !important;
+    padding: 0 !important; /* Use flexbox centering instead of padding for vertical alignment */
+    margin: 0 !important;
+    display: flex; 
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Force the link version of the button to be centered (fix for 'jump to top' issue) */
+  .hero .main-nav .dropdown-link,
+  .main-nav .dropdown-link {
+    display: flex; /* REMOVED !important so JS can hide it. JS must set display:flex when showing */
+    align-items: center !important;
+    justify-content: center !important;
+    height: 40px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Reset dropdown parent specifically */
+  .nav-item.dropdown {
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex; /* Allow overriding if needed, though usually always flex/column */
+    flex-direction: column !important;
+  }
+
+
+  /* --- HERO SECTION MOBILE --- */
+  .hero {
+    height: auto !important;
+    min-height: auto !important;
+    padding-bottom: 0 !important; /* Remove bottom padding, let content define it */
+    margin-bottom: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+  }
+
+  .hero-overlay {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    z-index: 1;
+  }
+
+  .hero-top {
+    padding-top: 25px !important;
+    min-height: auto;
+    width: 100% !important;
+    z-index: 2;
+  }
+
+  .hero-content {
+    padding: 10px 15px; /* Symmetrical padding, removed the 50px for hamburger */
+    text-align: center;
+  }
+
+  /* Active State for Mobile Nav */
+  .nav-item.active,
+  .main-nav .nav-item.active {
+      background-color: #446171 !important; /* Matches Breadcrumb Color (Greyish Blue) */
+      color: #fff !important;
+      font-weight: 700 !important;
+      border: none !important;
+      border-bottom: none !important;
+  }
+
+  .hero-title {
+    font-size: 16px !important;
+    line-height: 1.3;
+    padding: 0 10px;
+  }
+
+  .hero-subtitle {
+    font-size: 13px !important;
+    margin-top: 3px;
+  }
+
+  /* --- HERO BOTTOM (Officials + Center) --- */
+  .hero-bottom {
+    position: relative !important;
+    bottom: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important; /* Fix: Align to bottom baseline */
+    padding: 15px 10px 60px 10px !important; 
+    gap: 10px;
+    margin-top: 10px;
+    z-index: 2;
+  }
+
+  /* --- OFFICIALS (Bupati/Wakil) MOBILE --- */
+  .official {
+    width: auto !important;
+    flex-shrink: 0;
+  }
+
+  .official-photo {
+    width: 75px !important;
+    height: auto !important;
+  }
+
+  .official::after {
+    display: none;
+  }
+
+  .left-official,
+  .right-official {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* --- HERO CENTER (Logo + Slogan + Search) MOBILE --- */
+  .hero-center {
+    order: 0 !important;
+    flex: 1;
+    min-width: 0;
+    padding: 0 5px;
+  }
+
+  .logo-center {
+    width: 60px !important; /* Slightly larger for balance */
+    height: auto !important;
+    margin-bottom: 8px !important;
+  }
+
+  .hero-center h1 {
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+    letter-spacing: 0.5px !important;
+    margin-bottom: 8px !important;
+    padding: 0 !important;
+  }
+
+  /* --- SEARCH BAR MOBILE --- */
+  .search {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 3px 10px !important;
+    border-radius: 20px !important;
+    margin: 0 auto;
+  }
+
+  .search input {
+    font-size: 12px !important;
+    padding: 5px !important;
+  }
+
+  .search button {
+    font-size: 14px !important;
+    padding: 3px !important;
+  }
+
+  /* --- NAVIGATION MOBILE (Bottom of Hero) --- */
+  .main-nav {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    background: rgba(6, 88, 107, 1) !important; /* Full opacity to cover any bleed */
+    transform: none !important;
+    z-index: 100 !important;
+    box-shadow: none;
+    padding: 0;
+    margin: 0 !important;
+  }
+
+  /* --- HERO & MAIN GAP FIXES --- */
+  /* Remove bottom space from hero so breadcrumb touches it */
+  .hero {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: auto !important; /* Allow height to shrink if needed */
+  }
+
+  /* Remove top padding from main so breadcrumb starts immediately */
+  main {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  /* Ensure container inside breadcrumb (if any) allows full flushing */
+  .breadcrumb.container {
+    padding-left: 12px !important; 
+    padding-right: 12px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* --- BREADCRUMB MOBILE --- */
+  /* 1. Default Behavior (For Profil, Sejarah, etc.) - Just sit there, full width naturally */
+  .breadcrumb {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 8px 12px !important;
+    background: #446171 !important;
+    border-top: 1px solid rgba(255,255,255,0.1) !important;
+    z-index: 99 !important;
+    font-size: 11px !important;
+    display: flex !important;
+    align-items: center !important;
+    border-radius: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. Breakout Behavior (ONLY for Event, Berita, Info) - Force escape from parent padding */
+  /* These pages have <main class="container"> which traps the breadcrumb. */
+  main.container .breadcrumb,
+  .container .breadcrumb {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: -50vw !important;
+    left: 50% !important;
+    right: auto !important;
+  }
+
+
+  /* Force .container within breadcrumb to behave like a block with no padding if needed, 
+     but since .breadcrumb IS the container often, we just reset it. */
+  nav.breadcrumb.container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    width: 100% !important;
+  }
+
+  /* Truncate long breadcrumb text */
+  .breadcrumb span {
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* --- MAIN CONTENT MOBILE --- */
+  main.container {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 20px; /* Space after breadcrumb */
+  }
+
+  /* --- EVENT SECTION MOBILE --- */
+  .event-section {
+    padding: 25px 0;
+  }
+
+  .event-title {
+    font-size: 20px !important;
+    margin-bottom: 15px;
+  }
+
+  /* --- EVENT CARDS MOBILE --- */
+  .event-card {
+    min-width: 260px !important;
+    height: auto !important;
+    flex-direction: column !important;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .event-image {
+    width: 100% !important;
+    height: 150px !important;
+    border-radius: 10px;
+  }
+
+  .event-info {
+    padding-left: 0 !important;
+    padding-top: 10px;
+  }
+
+  .event-info h3 {
+    font-size: 16px !important;
+    margin-bottom: 8px;
+  }
+
+  /* --- CAROUSEL BUTTONS --- */
+  .carousel-btn {
+    padding: 10px 14px !important;
+    font-size: 16px !important;
+  }
+
+  .btn-prev {
+    left: 5px !important;
+  }
+
+  .btn-next {
+    right: 5px !important;
+  }
+
+  /* --- BERITA & INFORMASI SECTION --- */
+  .card-table-berita {
+    padding: 15px !important;
+    margin-top: 20px;
+  }
+
+  .header-table {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  .title {
+    font-size: 13px !important;
+    padding: 10px 8px !important;
+  }
+
+  .content-table {
+    grid-template-columns: 1fr !important;
+  }
+
+  .table-berita tr {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 10px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+  }
+
+  .table-berita .img-col {
+    flex-shrink: 0;
+  }
+
+  .table-berita .img-col img {
+    width: 90px !important;
+    height: 65px !important;
+    border-radius: 8px;
+  }
+
+  .table-berita .text-col {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .judul {
+    font-size: 13px !important;
+    line-height: 1.3 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .meta {
+    font-size: 11px !important;
+    gap: 8px !important;
+    margin-top: 4px;
+  }
+
+  .meta img {
+    width: 12px !important;
+  }
+
+  .table-info td {
+    font-size: 12px !important;
+    padding: 12px 15px !important;
+  }
+
+  .footer-table {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .footer-btn {
+    font-size: 14px !important;
+    padding: 12px !important;
+  }
+
+  /* --- MISI SECTION MOBILE --- */
+  .misi-section {
+    margin: 40px auto !important;
+    padding: 0 15px !important;
+  }
+
+  .misi-title {
+    font-size: 22px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .misi-row {
+    flex-direction: column !important;
+    gap: 25px !important;
+    margin-bottom: 40px !important;
+  }
+
+  .misi-item,
+  .misi-item.center-item {
+    width: 100% !important;
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  .misi-icon {
+    width: 80px !important;
+    height: 80px !important;
+    margin-bottom: 10px;
+  }
+
+  .misi-text {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    text-align: center !important;
+  }
+
+  .misi-desc {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    margin: 5px 0 0 0 !important;
+    text-align: center !important;
+  }
+
+  .text-right,
+  .center-text {
+    text-align: center !important;
+    margin: 0 !important;
+  }
+
+  /* --- FOOTER MOBILE --- */
+  .site-footer {
+     padding-top: 20px !important;
+     padding-bottom: 80px !important; /* Space for nav bar */
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important; /* Tighter gap */
+    text-align: center !important;
+  }
+
+  .footer-col-upper {
+    min-height: auto !important;
+    align-items: center !important;
+    margin-bottom: 10px !important; /* Reduced margin */
+  }
+
+  .footer-col-lower {
+    align-items: center !important;
+    margin-bottom: 15px !important; /* Reduced margin */
+  }
+
+  .footer-header-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 5px !important;
+  }
+
+  .footer-logo {
+    width: 60px !important; /* Smaller logo */
+    margin-bottom: 5px;
+  }
+
+  .footer-title-block {
+    text-align: center;
+  }
+
+  .footer-title {
+    font-size: 20px !important; /* Smaller text */
+  }
+  
+  .footer-subtitle {
+     font-size: 14px !important;
+  }
+
+  .footer-heading {
+    text-align: center !important;
+    margin-bottom: 5px !important;
+    font-size: 16px !important;
+  }
+
+  .icon-row {
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+  
+  .icon-row a img {
+      width: 32px !important; /* Smaller icons */
+      height: 32px !important;
+  }
+
+  .footer-address p {
+    justify-content: center !important;
+    text-align: center;
+    font-size: 13px !important; /* Smaller text */
+  }
+
+  .visitor-stats {
+    justify-content: center !important;
+    flex-wrap: wrap;
+    gap: 10px !important;
+  }
+  
+  .visitor-stats div {
+      min-width: 50px !important;
+  }
+  
+  .visitor-stats img {
+      width: 24px !important;
+      height: 24px !important;
+  }
+  
+  .visitor-stats p {
+      font-size: 10px !important;
+  }
+  
+  .visitor-stats span {
+      font-size: 14px !important;
+  }
+
+  .map-img {
+    max-width: 100%;
+    height: 130px !important; /* Much shorter map */
+  }
+
+  /* --- PAGE LAYOUT MOBILE --- */
+  .page-layout {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .page-title {
+    font-size: 22px !important;
+  }
+
+  .section-title {
+    font-size: 18px !important;
+  }
+
+  /* --- CARD GRID MOBILE --- */
+  .card-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  .card-berita {
+    border-width: 2px;
+  }
+
+  .card-image {
+    height: 160px !important;
+  }
+
+  .card-title {
+    font-size: 14px !important;
+  }
+
+  /* --- SIDEBAR MOBILE --- */
+  .sidebar {
+    gap: 15px !important;
+  }
+
+  .sidebar-card {
+    padding: 15px !important;
+  }
+
+  /* --- ARTICLE DETAIL MOBILE --- */
+  .detail-article {
+    padding: 20px !important;
+    border-width: 2px;
+  }
+
+  .article-title {
+    font-size: 20px !important;
+    /* Truncate long titles */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .article-meta {
+    gap: 12px !important;
+    font-size: 12px !important;
+  }
+
+  .article-hero-image {
+    max-height: 250px !important;
+  }
+
+  .article-content {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+
+  .article-share {
+    flex-wrap: wrap;
+    gap: 8px !important;
+  }
+
+  .share-btn {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+
+  /* --- EVENT HORIZONTAL CARD MOBILE --- */
+  .event-horizontal-card {
+    flex-direction: column !important;
+  }
+
+  .event-horizontal-card .event-poster {
+    width: calc(100% - 20px) !important;
+    height: 160px !important;
+    margin: 10px !important;
+  }
+
+  .event-horizontal-card .event-details {
+    padding: 0 15px 15px !important;
+  }
+
+  .event-horizontal-card .event-title {
+    font-size: 16px !important;
+  }
+
+  /* --- BUTTONS MOBILE --- */
+  .btn {
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+  }
+
+  .event-actions {
+    flex-direction: column;
+    gap: 10px !important;
+  }
+
+  /* --- PROFIL PAGE CARDS --- */
+  .card {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    text-align: center;
+  }
+
+  .card.image-left,
+  .card.image-right {
+    grid-template-columns: 1fr !important;
+  }
+
+  .card img {
+    width: 100% !important;
+    max-width: 250px !important;
+    height: auto !important;
+    margin: 0 auto;
+  }
+
+  .card .card-text {
+    order: 2 !important;
+  }
+
+  .card.image-right img {
+    order: 1 !important;
+  }
+
+  .intro h2 {
+    font-size: 22px !important;
+  }
+
+  .intro .lead {
+    font-size: 15px !important;
+    text-align: center !important;
+    /* Truncate long lead text */
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Add space after Lihat Selengkapnya links */
+  .read-more,
+  a.read-more,
+  .intro a {
+    margin-bottom: 25px !important;
+    display: inline-block;
+  }
+
+  .hero-img {
+    max-height: 200px !important;
+    margin-top: 20px !important;
+  }
+
+  /* Profil cards spacing */
+  .card.image-left {
+    margin-top: 30px !important;
+  }
+
+  /* --- INFORMASI ITEMS MOBILE --- */
+  .informasi-item {
+    padding: 15px !important;
+  }
+
+  .informasi-title {
+    font-size: 15px !important;
+  }
+
+  .informasi-summary {
+    font-size: 13px !important;
+  }
+
+  /* --- GALLERY MOBILE --- */
+  .gallery-item {
+    min-width: 150px !important;
+    height: 120px !important;
+  }
+
+  /* --- PAGINATION MOBILE --- */
+  .pagination {
+    flex-wrap: wrap;
+    gap: 5px !important;
+  }
+
+  .page-btn {
+    min-width: 35px !important;
+    height: 35px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* ===========================================
+   SMALL PHONE BREAKPOINT (max-width: 420px)
+   =========================================== */
+@media (max-width: 420px) {
+  
+  /* --- HERO ADJUSTMENTS --- */
+  .hero-title {
+    font-size: 14px !important;
+  }
+
+  .hero-subtitle {
+    font-size: 11px !important;
+  }
+
+  .official-photo {
+    width: 60px !important;
+  }
+
+  .logo-center {
+    width: 45px !important;
+  }
+
+  .hero-center h1 {
+    font-size: 10px !important;
+  }
+
+  /* --- EVEN SMALLER TEXT --- */
+  .event-title {
+    font-size: 18px !important;
+  }
+
+  .misi-title {
+    font-size: 18px !important;
+  }
+
+  .misi-text {
+    font-size: 14px !important;
+  }
+
+  .misi-desc {
+    font-size: 12px !important;
+  }
+
+  /* --- CARDS EVEN SMALLER --- */
+  .event-card {
+    min-width: 240px !important;
+  }
+
+  .table-berita .img-col img {
+    width: 70px !important;
+    height: 50px !important;
+  }
+
+  .judul {
+    font-size: 12px !important;
+  }
+
+  /* --- FOOTER ADJUSTMENTS - COMPACT --- */
+  footer,
+  .footer {
+    padding: 20px 10px !important;
+  }
+
+  .footer-logo img {
+    width: 60px !important;
+    height: auto !important;
+  }
+
+  .footer-title {
+    font-size: 16px !important;
+  }
+
+  .footer-subtitle {
+    font-size: 12px !important;
+  }
+
+  .footer-address {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+  }
+
+  .social-icons a,
+  .social-icons img {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .visitor-stats {
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .visitor-stats .stat-item {
+    padding: 8px !important;
+  }
+
+  .visitor-stats span,
+  .stat-label,
+  .stat-value {
+    font-size: 11px !important;
+  }
+
+  .stat-icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  /* Map smaller */
+  .footer-map iframe,
+  .map-container iframe {
+    height: 120px !important;
+  }
+}
+
+/* ===========================================
+   UTILITY: HIDE ON MOBILE
+   =========================================== */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* ===========================================
+   UTILITY: MOBILE-ONLY VISIBLE
+   =========================================== */
+.show-mobile {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .show-mobile {
+    display: block !important;
+  }
+}

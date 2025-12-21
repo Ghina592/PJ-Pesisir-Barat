@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="header-profil.css" />
     <link rel="stylesheet" href="sejarah.css" />
     <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="mobile.css" />
     <style>
       .logo-wrapper {
         display: flex;
@@ -63,6 +64,23 @@
         font-weight: bold;
         min-width: 20px;
         flex-shrink: 0;
+      }
+
+      /* MOBILE FIXES - INLINE OVERRIDE */
+      @media (max-width: 768px) {
+        .main-nav .nav-item {
+          padding: 6px 3px !important;
+          font-size: 9px !important;
+        }
+        .main-nav .dropbtn,
+        .main-nav .dropdown-trigger,
+        .main-nav .dropdown-link {
+          padding: 6px 3px !important;
+          font-size: 9px !important;
+        }
+        .breadcrumb {
+          margin-top: -10px !important;
+        }
       }
     </style>
     <meta name="theme-color" content="#e9caa2" />
@@ -118,8 +136,9 @@
         <div class="nav-item" onclick="window.location.href='lambang.html'">
           LAMBANG
         </div>
-        <div class="nav-item dropdown">
-          <button class="dropbtn">PEMERINTAHAN &#9662;</button>
+        <div class="nav-item dropdown" id="pemerintahanDropdown">
+          <span class="dropbtn dropdown-trigger" id="dropdownTrigger">PEMERINTAHAN ▾</span>
+          <a href="pemerintahan.html" class="dropbtn dropdown-link" id="dropdownLink" style="display:none;">PEMERINTAHAN ▾</a>
           <ul class="dropdown-menu">
             <li>
               <div class="nav-item" onclick="window.location.href='profil_bupati.html'">
@@ -203,19 +222,28 @@
         });
       }
 
-      // Dropdown Logic
-      document.querySelectorAll(".nav-item.dropdown").forEach((drop) => {
-        const btn = drop.querySelector(".dropbtn");
-        if(btn){
-            btn.addEventListener("click", function (e) {
-              e.stopPropagation();
-              drop.classList.toggle("open");
-            });
-        }
-      });
-      document.addEventListener("click", function () {
-        document.querySelectorAll(".nav-item.dropdown.open").forEach((d) => d.classList.remove("open"));
-      });
+      // 2-Button Dropdown Illusion Logic
+      const dropdownTrigger = document.getElementById("dropdownTrigger");
+      const dropdownLink = document.getElementById("dropdownLink");
+      const dropdown = document.getElementById("pemerintahanDropdown");
+      
+      if (dropdownTrigger && dropdownLink && dropdown) {
+        dropdownTrigger.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropdownTrigger.style.display = "none";
+          dropdownLink.style.display = "flex";
+          dropdown.classList.add("open");
+        });
+        
+        document.addEventListener("click", function(e) {
+          if (!e.target.closest("#pemerintahanDropdown")) {
+            dropdown.classList.remove("open");
+            dropdownTrigger.style.display = "flex";
+            dropdownLink.style.display = "none";
+          }
+        });
+      }
     </script>
   </body>
 </html>

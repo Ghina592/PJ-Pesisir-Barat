@@ -141,21 +141,10 @@
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
 }
 
-/* Name tags under officials */
+/* Name tags removed as per user request */
 .official::after {
-  content: attr(data-name);
-  display: block;
-  background: linear-gradient(135deg, #1a9cb8 0%, #06586b 100%);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 600;
-  text-align: center;
-  padding: 4px 8px;
-  border-radius: 4px;
-  margin-top: 5px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
+  content: none !important;
+  display: none !important;
 }
 
 /* --- HERO CENTER (Logo + Slogan + Search) --- */
@@ -302,7 +291,7 @@
   z-index: 9999;
 }
 
-.nav-item.dropdown:hover .dropdown-menu,
+/* Click-only dropdown (no hover) - works better on touch devices */
 .nav-item.dropdown.open .dropdown-menu {
   display: flex;
 }

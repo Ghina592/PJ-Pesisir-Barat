@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="header-profil.css" />
     <link rel="stylesheet" href="sejarah.css" />
     <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="mobile.css" />
     <style>
       .logo-wrapper {
         display: flex;
@@ -121,8 +122,11 @@
         <div class="nav-item" onclick="window.location.href='lambang.html'">
           LAMBANG
         </div>
-        <div class="nav-item dropdown">
-          <a href="pemerintahan.html" class="dropbtn" onclick="window.location.href='pemerintahan.html'; return false;">PEMERINTAHAN ▾</a>
+        <div class="nav-item dropdown active" id="pemerintahanDropdown">
+          <!-- Button 1: Trigger (no underline, just opens dropdown) -->
+          <span class="dropbtn dropdown-trigger active" id="dropdownTrigger">PEMERINTAHAN ▾</span>
+          <!-- Button 2: Real link (hidden initially, shown when dropdown opens) -->
+          <a href="pemerintahan.html" class="dropbtn dropdown-link active" id="dropdownLink" style="display:none;">PEMERINTAHAN ▾</a>
           <ul class="dropdown-menu">
             <li>
               <div
@@ -264,19 +268,34 @@
         });
       }
 
-      // Dropdown Logic
-      document.querySelectorAll(".nav-item.dropdown").forEach((drop) => {
-        const btn = drop.querySelector(".dropbtn");
-        if(btn){
-            btn.addEventListener("click", function (e) {
-              e.stopPropagation();
-              drop.classList.toggle("open");
-            });
-        }
-      });
-      document.addEventListener("click", function () {
-        document.querySelectorAll(".nav-item.dropdown.open").forEach((d) => d.classList.remove("open"));
-      });
+      // 2-Button Dropdown Illusion Logic
+      const dropdownTrigger = document.getElementById("dropdownTrigger");
+      const dropdownLink = document.getElementById("dropdownLink");
+      const dropdown = document.getElementById("pemerintahanDropdown");
+      
+      if (dropdownTrigger && dropdownLink && dropdown) {
+        // Click trigger: show real link + open dropdown
+        dropdownTrigger.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Hide trigger, show real link
+          dropdownTrigger.style.display = "none";
+          dropdownLink.style.display = "flex";
+          
+          // Open dropdown
+          dropdown.classList.add("open");
+        });
+        
+        // Click outside: reset to trigger button
+        document.addEventListener("click", function(e) {
+          if (!e.target.closest("#pemerintahanDropdown")) {
+            dropdown.classList.remove("open");
+            dropdownTrigger.style.display = "flex";
+            dropdownLink.style.display = "none";
+          }
+        });
+      }
     </script>
   </body>
 </html>

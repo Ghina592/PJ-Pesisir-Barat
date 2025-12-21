@@ -1,0 +1,32 @@
+/* =========================================
+   MOBILE PROFIL OVERRIDE
+   Special CSS for sejarah, lambang, pemerintahan pages
+   This file should be loaded LAST after mobile.css
+   ========================================= */
+
+@media (max-width: 768px) {
+  /* FORCE THIN NAVBAR for profil pages */
+  .main-nav {
+    padding: 0 !important;
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  .main-nav .nav-item {
+    padding: 6px 4px !important;
+    font-size: 10px !important;
+    letter-spacing: 0.3px !important;
+  }
+
+  .main-nav .dropbtn,
+  .main-nav .dropdown-trigger,
+  .main-nav .dropdown-link {
+    padding: 6px 4px !important;
+    font-size: 10px !important;
+  }
+
+  .main-nav .dropdown-menu .nav-item {
+    padding: 8px 12px !important;
+    font-size: 10px !important;
+  }
+}

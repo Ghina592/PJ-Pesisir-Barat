@@ -525,6 +525,61 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Dropdown click handler: Click 1 = open, Click 2 = navigate (works on ALL devices)
+  const dropdowns = document.querySelectorAll('.nav-item.dropdown');
+  dropdowns.forEach(dropdown => {
+    const dropbtn = dropdown.querySelector('.dropbtn');
+    if (dropbtn) {
+      // Remove any existing onclick that blocks navigation
+      if (dropbtn.hasAttribute('onclick')) {
+        const onclickValue = dropbtn.getAttribute('onclick');
+        // Store the href for later navigation
+        const hrefMatch = onclickValue.match(/window\.location\.href\s*=\s*['"]([^'"]+)['"]/);
+        if (hrefMatch) {
+          dropbtn.dataset.navHref = hrefMatch[1];
+        }
+        // Remove the onclick to prevent conflicts
+        dropbtn.removeAttribute('onclick');
+      }
+      
+      dropbtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Check if dropdown is already open
+        const isOpen = dropdown.classList.contains('open');
+        
+        if (isOpen) {
+          // Second click: navigate to the page
+          const navHref = dropbtn.dataset.navHref || dropbtn.getAttribute('href');
+          if (navHref && navHref !== '#') {
+            window.location.href = navHref;
+          }
+        } else {
+          // First click: open dropdown
+          // Close other dropdowns first
+          dropdowns.forEach(other => {
+            if (other !== dropdown) {
+              other.classList.remove('open');
+            }
+          });
+          
+          // Open this dropdown
+          dropdown.classList.add('open');
+        }
+      });
+    }
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item.dropdown')) {
+      dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('open');
+      });
+    }
+  });
+
   // Initialize global search on any page with search input
   const searchInput = document.getElementById("searchInput");
   const searchBtn = document.getElementById("searchBtn");
@@ -592,9 +647,14 @@ function setActiveNav() {
 }
 
 // =============================================================================
-// BREADCRUMB - Move inside header for absolute positioning
+// BREADCRUMB - Move inside header for absolute positioning (DESKTOP ONLY)
 // =============================================================================
 function moveBreadcrumbToHeader() {
+  // Skip on mobile - breadcrumb should stay in main content area
+  if (window.innerWidth <= 768) {
+    return;
+  }
+  
   const breadcrumb = document.querySelector('.breadcrumb');
   const header = document.querySelector('header.hero');
   
