@@ -1,0 +1,281 @@
+/* =========================================
+   FOOTER STYLES (Rigid Grid System)
+   ========================================= */
+
+main {
+  min-height: 70vh;
+}
+
+.site-footer {
+  background: #f7d9aa;
+  padding: 40px 0 25px;
+  color: #0c3c72;
+  font-family: 'Poppins', sans-serif;
+}
+
+.site-footer .container {
+  max-width: 1400px !important;
+  width: 95% !important;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1.5fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- UPPER SECTION (Rigid Height for Alignment) --- */
+.footer-col-upper {
+  /* Adjusted min-height to reduce internal gap while maintaining alignment */
+  min-height: 95px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* Balanced margin: Enough to separate, but not too wide like before */
+  margin-bottom: 20px; 
+  border-bottom: 1px solid rgba(0,0,0,0.0); /* Imaginary grid line */
+}
+
+/* Specific Alignment for Center/Right */
+.footer-col-center .footer-col-upper,
+.footer-col-center .footer-col-lower {
+  align-items: flex-start; /* LEFT ALIGNED */
+  text-align: left;
+}
+
+/* Explicitly align the heading in the middle column */
+.footer-col-center .footer-heading {
+  text-align: left;
+  width: 100%;
+  margin-left: 0;
+  /* Tight spacing below 'STATISTIK PENGUNJUNG' per screenshot */
+  margin-bottom: 5px; 
+}
+
+.footer-col-right .footer-col-upper {
+  align-items: flex-start;
+  min-height: auto !important;
+  margin-bottom: 0 !important;
+}
+
+/* --- LOGO SECTION --- */
+.footer-header-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.footer-logo {
+  width: 75px;
+  height: auto;
+  flex-shrink: 0;
+  margin-top: -5px;
+}
+
+.footer-title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: #0c3c72;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.footer-subtitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0c3c72;
+  line-height: 1.2;
+}
+
+/* --- HEADINGS --- */
+.footer-heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0c3c72;
+  text-transform: uppercase;
+  margin: 0 0 15px 0; /* Default for other columns */
+  line-height: 1.2;
+}
+
+/* --- ICONS (Upper Center) --- */
+.icon-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.icon-row a {
+  background: transparent !important;
+  border: none !important;
+  display: flex;
+  transition: transform 0.2s;
+}
+
+/* Colorize WhatsApp Icon to Blue */
+.icon-row a[title="WhatsApp"] img {
+  filter: hue-rotate(110deg) brightness(0.9) saturate(1.2); 
+}
+
+.icon-row a:hover {
+  transform: scale(1.1);
+}
+
+.icon-row a img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+/* --- LOWER SECTION CONTENTS --- */
+
+/* Address */
+.footer-address p {
+  margin: -15px 0; /* User edited this previously */
+  font-size: 15px;
+  line-height: 1.5;
+  color: #0c3c72;
+  font-weight: 600;
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer-address p img {
+  width: 16px; 
+  height: auto;
+  margin-right: 8px;
+  margin-top: 3px;
+}
+
+/* Visitor Stats */
+.visitor-stats {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+  /* TIGHT SPACING CHANGE: Reduced to 0 */
+  margin-top: 0px; 
+  width: 100%;
+}
+
+.visitor-stats > div {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 60px;
+}
+
+.visitor-stats img {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 5px;
+  object-fit: contain;
+}
+
+.visitor-stats p {
+  font-size: 12px;
+  margin: 0 0 2px 0;
+  color: #0c3c72;
+  font-weight: 600;
+}
+
+.visitor-stats span {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0c3c72;
+}
+
+/* Map */
+.map-link {
+  display: block;
+  width: 100%;
+}
+
+.map-img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* --- BOTTOM --- */
+.footer-bottom {
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0,0,0,0.05); /* Optional subtle line */
+  text-align: center;
+  font-size: 13px;
+  color: #0c3c72;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-col-upper {
+    min-height: auto;
+    align-items: center !important;
+    margin-bottom: 20px;
+    border-bottom: none;
+  }
+  
+  .footer-header-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-col-lower {
+    align-items: center !important;
+    margin-bottom: 30px;
+  }
+  
+  .footer-address p {
+    justify-content: center;
+  }
+
+  .map-img {
+    max-width: 100%;
+  }
+  
+  /* Reset alignment for mobile */
+  .footer-col-center .footer-col-upper,
+  .footer-col-center .footer-col-lower,
+  .footer-col-center .footer-heading,
+  .icon-row,
+  .visitor-stats {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .footer-col-center .footer-heading {
+      margin-bottom: 15px; /* Reset tightening for mobile */
+      text-align: center;
+  }
+}

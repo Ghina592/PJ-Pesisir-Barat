@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
   <head>
     <meta charset="utf-8" />
@@ -12,7 +12,10 @@
     />
 
     <!-- Styles -->
+      <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="pariwisata-sub.css" />
+    
+        <link rel="stylesheet" href="footer.css" />
     
     <!-- meta for theme-color -->
     <meta name="theme-color" content="#e9caa2" />
@@ -77,94 +80,26 @@
 
     <!-- MAIN CONTENT -->
     <main>
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb container">
+        <a href="index.html">BERANDA</a> &gt; 
+        <a href="pariwisata.html">PARIWISATA</a> &gt; 
+        <a href="#" id="breadcrumbKategori">WISATA</a> &gt; 
+        <span id="breadcrumbNama">Loading...</span>
+      </nav>
+
         <div class="detail-container" id="wisataDetail">
             <!-- Content will be loaded dynamically -->
             <p>Loading...</p>
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <!-- ABOUT -->
-        <div class="footer-about">
-          <img src="assets/img/logo-small.png" alt="logo" class="footer-logo" />
+        <!-- FOOTER -->
+    <div id="footer-placeholder"></div>
 
-          <h2 class="footer-title">
-            PEMERINTAHAN <br />
-            <span>KABUPATEN PESISIR BARAT</span>
-          </h2>
-
-          <div class="footer-address">
-            <p>
-              <img src="assets/map.png" />
-              Jl. Kesuma No. 1 Gedung A Lt.1 Kompleks Perkantoran Pemda, Kec.
-              Pesisir Tengah
-            </p>
-            <p>Kabupaten Pesisir Barat, Provinsi Lampung – Indonesia 34874</p>
-
-            <p><img src="assets/wa.png" alt="" /> +62 853-6998-9990</p>
-            <p>
-              <img src="assets/email.png" style="width: 25px" alt="" />
-              admin@pesisirbaratkab.go.id
-            </p>
-          </div>
-        </div>
-
-        <!-- IKUTI KAMI -->
-        <div class="footer-follow">
-          <h3 class="footer-heading">IKUTI KAMI</h3>
-
-          <div class="social-icons">
-            <a href="#"><img src="assets/youtube.png" alt="yt" /></a>
-            <a href="#"><img src="assets/facebook.png" alt="fb" /></a>
-            <a href="#"><img src="assets/instagram.png" alt="ig" /></a>
-            <a href="#"><img src="assets/twitter.png" alt="tw" /></a>
-          </div>
-
-          <p class="link-website">
-            <img src="assets/web.png" alt="" /> https://pesisirbaratkab.go.id
-          </p>
-
-          <h3 class="footer-heading">STATISTIK PENGUNJUNG</h3>
-
-          <div class="visitor-stats">
-            <div>
-              <img src="assets/group.png" alt="" />
-              <p>Total</p>
-              <span>31,339</span>
-            </div>
-            <div>
-              <img src="assets/eye.png" alt="" />
-              <p>Hari Ini</p>
-              <span>79</span>
-            </div>
-            <div>
-              <img src="assets/calender.png" alt="" />
-              <p>Bulan Ini</p>
-              <span>405</span>
-            </div>
-            <div>
-              <img src="assets/calender-solid.png" alt="" />
-              <p>Tahun Ini</p>
-              <span>55,668</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- MAP -->
-        <div class="footer-map">
-          <h3 class="footer-heading">LOKASI</h3>
-          <img src="assets/lokasi.png" class="map-img" alt="Map" />
-        </div>
-      </div>
-
-      <!-- BOTTOM -->
-      <div class="footer-bottom" style="text-align: center">
-        © <span id="year"></span> Pemerintah Kabupaten Pesisir Barat — All
-        rights reserved.
-      </div>
-    </footer>
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="footer-template.js"></script>
 
     <script src="script.js"></script>
     <script>
@@ -180,6 +115,17 @@
           document.getElementById('wisataDetail').innerHTML = '<p>Wisata tidak ditemukan.</p>';
           return;
         }
+
+        // Update breadcrumb dynamically
+        const kategoriMap = {
+          'wisata-alam': { text: 'WISATA ALAM', href: 'wisata-alam.html' },
+          'wisata-budaya': { text: 'WISATA BUDAYA', href: 'wisata-budaya.html' },
+          'wisata-kuliner': { text: 'WISATA KULINER', href: 'wisata-kuliner.html' }
+        };
+        const kategori = kategoriMap[wisata.kategori] || { text: 'WISATA', href: 'pariwisata.html' };
+        document.getElementById('breadcrumbKategori').textContent = kategori.text;
+        document.getElementById('breadcrumbKategori').href = kategori.href;
+        document.getElementById('breadcrumbNama').textContent = wisata.nama.toUpperCase();
 
         // Build cost list HTML
         let costHtml = '';
@@ -271,3 +217,5 @@
     </script>
   </body>
 </html>
+
+

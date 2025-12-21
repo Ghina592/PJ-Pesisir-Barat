@@ -283,7 +283,7 @@ class Gallery {
     this.overlay = null;
     this.currentIndex = 0;
     this.images = [];
-    this.createOverlay();
+    // this.createOverlay(); // Disabled per user request
   }
 
   createOverlay() {

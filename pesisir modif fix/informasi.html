@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
   <head>
     <meta charset="utf-8" />
@@ -8,22 +8,48 @@
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+      <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="footer.css" />
     <meta name="theme-color" content="#e9caa2" />
   </head>
   <body>
     <header class="hero">
-      <div class="hero-header">
-        <img src="assets/img/logo-small.png" class="hero-logo" onclick="window.location.href='index.html'" style="cursor: pointer;" />
-        <div class="hero-text">
-          <h3>PEMERINTAHAN</h3>
-          <h4>KABUPATEN PESISIR BARAT</h4>
-        </div>
-      </div>
+      <div class="hero-overlay"></div>
 
-      <div class="hero-center">
-        <h1>SELAMAT DATANG DI WEBSITE RESMI</h1>
-        <h2>KABUPATEN PESISIR BARAT</h2>
+      <div class="hero-top container">
+        <div class="hero-content">
+          <h1 class="hero-title">SELAMAT DATANG DI WEBSITE RESMI</h1>
+          <h2 class="hero-subtitle">KABUPATEN PESISIR BARAT</h2>
+        </div>
+
+        <div class="hero-bottom">
+          <div class="official left-official">
+            <img
+              src="assets/img/bupati.png"
+              alt="bupati"
+              class="official-photo"
+            />
+          </div>
+
+          <div class="hero-center">
+            <img src="assets/img/logo.png" alt="logo" class="logo-center" onclick="window.location.href='index.html'" style="cursor: pointer;" />
+            <h1>NEGERI PARA SAI BATIN DAN ULAMA</h1>
+
+            <div class="search">
+              <input type="search" placeholder="Search..." id="searchInput" />
+              <button id="searchBtn" aria-label="search">🔍</button>
+            </div>
+          </div>
+
+          <div class="official right-official">
+            <img
+              src="assets/img/wakil.png"
+              alt="wakil"
+              class="official-photo"
+            />
+          </div>
+        </div>
       </div>
 
       <div class="hamburger" id="hamburgerBtn">☰</div>
@@ -52,42 +78,15 @@
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div class="footer-about">
-          <img src="assets/img/logo-small.png" alt="logo" class="footer-logo" />
-          <h2 class="footer-title">PEMERINTAHAN <br /><span>KABUPATEN PESISIR BARAT</span></h2>
-          <div class="footer-address">
-            <p><img src="assets/map.png" /> Jl. Kesuma No. 1 Gedung A Lt.1 Kompleks Perkantoran Pemda, Kec. Pesisir Tengah</p>
-            <p>Kabupaten Pesisir Barat, Provinsi Lampung – Indonesia 34874</p>
-            <p><img src="assets/wa.png" alt="" /> +62 853-6998-9990</p>
-            <p><img src="assets/email.png" style="width: 25px" alt="" /> admin@pesisirbaratkab.go.id</p>
-          </div>
-        </div>
+        <!-- FOOTER -->
+    <div id="footer-placeholder"></div>
 
-        <div class="footer-follow">
-          <h3 class="footer-heading">IKUTI KAMI</h3>
-          <div class="social-icons">
-            <a href="#"><img src="assets/youtube.png" alt="yt" /></a>
-            <a href="#"><img src="assets/facebook.png" alt="fb" /></a>
-            <a href="#"><img src="assets/instagram.png" alt="ig" /></a>
-            <a href="#"><img src="assets/twitter.png" alt="tw" /></a>
-          </div>
-          <p class="link-website"><img src="assets/web.png" alt="" /> https://pesisirbaratkab.go.id</p>
-        </div>
-
-        <div class="footer-map">
-          <h3 class="footer-heading">LOKASI</h3>
-          <img src="assets/lokasi.png" class="map-img" alt="Map" />
-        </div>
-      </div>
-
-      <div class="footer-bottom" style="text-align: center">
-        © <span id="year"></span> Pemerintah Kabupaten Pesisir Barat — All rights reserved.
-      </div>
-    </footer>
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="footer-template.js"></script>
 
     <script src="script.js"></script>
+    
     <script>
       document.addEventListener('DOMContentLoaded', async function() {
         const informasi = await DataManager.load('informasi');
@@ -116,3 +115,5 @@
     </script>
   </body>
 </html>
+
+
