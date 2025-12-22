@@ -548,7 +548,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 320px;
   gap: 30px;
-  margin-top: 20px;
+  margin-top: 50px; /* Increased from 20px to fix breadcrumb overlap */
 }
 
 @media (max-width: 992px) {

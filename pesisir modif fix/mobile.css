@@ -369,6 +369,11 @@
     padding-top: 20px; /* Space after breadcrumb */
   }
 
+  /* Fix for Detail pages content sticking to breadcrumb */
+  .page-layout {
+    margin-top: 25px !important;
+  }
+
   /* --- EVENT SECTION MOBILE --- */
   .event-section {
     padding: 25px 0;
@@ -604,6 +609,40 @@
     display: flex !important;
     flex-direction: column !important;
   }
+  
+  /* --- EVENT DETAIL MOBILE --- */
+  .event-contact,
+  .event-contact h3,
+  .contact-info,
+  .event-actions {
+      text-align: center !important;
+      align-items: center !important;
+      justify-content: center !important;
+  }
+  
+  .contact-info p, 
+  .contact-info div,
+  .contact-info a {
+      justify-content: center !important;
+      text-align: center !important;
+      display: flex !important;
+      width: 100% !important;
+  }
+
+  .event-actions {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      width: 100% !important;
+  }
+  
+  .event-actions .btn {
+      width: 100% !important;
+      justify-content: center !important;
+      text-align: center !important;
+      margin: 0 !important;
+  }
+
   
   .footer-col-center {
     grid-area: center;
