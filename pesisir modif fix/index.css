@@ -549,6 +549,7 @@ body {
   grid-template-columns: 1fr 320px;
   gap: 30px;
   margin-top: 50px; /* Increased from 20px to fix breadcrumb overlap */
+  margin-bottom: 60px; /* Added spacing before footer */
 }
 
 @media (max-width: 992px) {
