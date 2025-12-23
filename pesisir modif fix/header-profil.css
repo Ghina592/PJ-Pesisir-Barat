@@ -48,6 +48,8 @@ body {
   padding: 16px 0 !important;
   width: 100%;
   display: block;
+  justify-content: center !important; /* Fix for when JS sets display:flex */
+  align-items: center !important;
 }
 
 /* Dropdown menu - fix untuk nested nav-item di dalam dropdown */
@@ -55,7 +57,7 @@ body {
   padding: 12px 20px !important;
   max-width: none !important;
   flex: none !important;
-  text-align: left !important;
+  text-align: center !important;
 }
 
 /* Ensure dropdown menu appears above all content */
@@ -72,14 +74,35 @@ body {
 
 /* Responsive adjustments untuk profil pages */
 @media (max-width: 768px) {
+  /* Force thin navbar padding - MUST match other pages */
   .main-nav .nav-item {
-    padding: 14px 20px !important;
-    flex: none !important;
+    padding: 8px 5px !important;
+    flex: 1 !important;
     max-width: none !important;
+    font-size: 11px !important;
+    text-align: center !important;
   }
   
   .dropbtn {
-    padding: 14px 20px !important;
-    text-align: left;
+    padding: 8px 5px !important;
+    text-align: center !important;
+    font-size: 11px !important;
+  }
+  
+  /* Dropdown menu items */
+  .dropdown-menu .nav-item {
+    padding: 10px 15px !important;
+    font-size: 11px !important;
+    text-align: left !important;
+  }
+  
+  /* 2-Button Dropdown Illusion */
+  .dropdown-trigger {
+    text-decoration: none !important;
+    cursor: pointer;
+  }
+  
+  .dropdown-link {
+    text-decoration: underline !important;
   }
 }

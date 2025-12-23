@@ -7,8 +7,10 @@
     "deskripsi": "Pulau Pisang memiliki dengan hamparan pasir putih yang bersih, laut berwarna hijau-tosca, serta deretan pohon kelapa yang menari di tepi pantai—seolah mengundang kamu untuk berhenti sejenak dari keramaian kota.\n\nTerumbu karang dan kehidupan lautnya masih cukup alami, menjadikannya pilihan bagus untuk snorkeling atau hanya sekedar menikmati pemandangan laut yang tenang.",
     "gambarHero": "assets/wisata/pulau-pisang.png",
     "galeri": [
-      "assets/pulau-pisang-1.jpg",
-      "assets/pulau-pisang-2.jpg"
+      "assets/wisata/pulau-pisang-2.png",
+      "assets/wisata/pulau-pisang-3.png",
+      "assets/wisata/airterjun.png",
+      "assets/wisata/bukitbarisan.png"
     ],
     "estimasiBiaya": {
       "transport": "Rp150.000 - Rp250.000 (bus/minivan 6-7 jam)",
@@ -19,7 +21,9 @@
     },
     "kontak": {
       "instagram": "@aerotravelindonesia",
-      "whatsapp": "+6281324641414"
+      "instagramUrl": "https://www.instagram.com/aerotravelindonesia/",
+      "whatsapp": "+6281324641414",
+      "whatsappUrl": "https://api.whatsapp.com/send/?phone=%2B6281324641414&text&type=phone_number&app_absent=0"
     },
     "lokasi": "https://maps.app.goo.gl/2qRSvFDxdsiD6D4S6"
   },
@@ -31,7 +35,8 @@
     "deskripsi": "Air Terjun Kuripan adalah salah satu destinasi wisata alam tersembunyi di Kabupaten Pesisir Barat. Terletak di tengah hutan Bukit Barisan, air terjun ini menawarkan pemandangan yang spektakuler dengan air yang jernih dan sejuk.",
     "gambarHero": "assets/wisata/airterjun.png",
     "galeri": [
-      "assets/air-terjun-1.jpg"
+      "assets/wisata/pulau-pisang.png",
+      "assets/wisata/tempoyak.png"
     ],
     "estimasiBiaya": {
       "transport": "Rp50.000 - Rp100.000",
@@ -52,8 +57,8 @@
     "deskripsi": "Taman Nasional Bukit Barisan Selatan merupakan rumah bagi berbagai satwa langka termasuk gajah Sumatera, harimau Sumatera, dan badak Sumatera. Wisatawan dapat menikmati trekking, safari, dan pengamatan satwa liar.",
     "gambarHero": "assets/wisata/bukitbarisan.png",
     "galeri": [
-      "assets/taman-nasional-1.jpg",
-      "assets/taman-nasional-2.jpg"
+      "assets/wisata/gabing.png",
+      "assets/wisata/seruit.png"
     ],
     "estimasiBiaya": {
       "tiketMasuk": "Rp20.000",
@@ -155,5 +160,77 @@
       "whatsapp": "+6281234567890"
     },
     "lokasi": "https://maps.app.goo.gl/example-seruit"
+  },
+  {
+    "id": "tari-cangget",
+    "nama": "Tari Cangget",
+    "kategori": "wisata-budaya",
+    "ringkasan": "Tarian Tradisional Sakral Masyarakat Lampung",
+    "deskripsi": "Tari Cangget adalah tarian tradisional sakral masyarakat Lampung yang ditampilkan dalam upacara adat dan penyambutan tamu kehormatan. Tarian ini menampilkan gerakan-gerakan anggun yang melambangkan keanggunan dan keramahan masyarakat Pesisir Barat.",
+    "gambarHero": "assets/wisata/bukitbarisan.png",
+    "galeri": [],
+    "estimasiBiaya": {
+      "tiketMasuk": "Gratis (saat acara adat)",
+      "total": "Gratis"
+    },
+    "kontak": {
+      "instagram": "@budayapesbar",
+      "whatsapp": "+6281234567890"
+    },
+    "lokasi": "https://maps.app.goo.gl/example-cangget"
+  },
+  {
+    "id": "rumah-adat-lamban-tuha",
+    "nama": "Rumah Adat Lamban Tuha",
+    "kategori": "wisata-budaya",
+    "ringkasan": "Warisan Arsitektur Khas Lampung Pesisir",
+    "deskripsi": "Lamban Tuha adalah rumah adat tradisional masyarakat Lampung Pesisir. Bangunan panggung dengan ukiran khas ini menjadi simbol kebudayaan dan sejarah masyarakat Pesisir Barat yang masih dilestarikan hingga saat ini.",
+    "gambarHero": "assets/wisata/pulau-pisang.png",
+    "galeri": [],
+    "estimasiBiaya": {
+      "tiketMasuk": "Rp5.000 - Rp10.000",
+      "total": "Rp5.000 - Rp10.000"
+    },
+    "kontak": {
+      "instagram": "@budayapesbar",
+      "whatsapp": "+6281234567890"
+    },
+    "lokasi": "https://maps.app.goo.gl/example-lamban"
+  },
+  {
+    "id": "festival-sekura",
+    "nama": "Festival Sekura",
+    "kategori": "wisata-budaya",
+    "ringkasan": "Pesta Topeng Tradisional Pasca Lebaran",
+    "deskripsi": "Festival Sekura adalah tradisi unik masyarakat Lampung Barat yang dilaksanakan setelah Hari Raya Idul Fitri. Peserta menggunakan topeng dan kostum unik sambil berkeliling kampung, menciptakan suasana meriah dan penuh keceriaan.",
+    "gambarHero": "assets/wisata/gabing.png",
+    "galeri": [],
+    "estimasiBiaya": {
+      "tiketMasuk": "Gratis",
+      "total": "Gratis"
+    },
+    "kontak": {
+      "instagram": "@festivalsekura",
+      "whatsapp": "+6281234567890"
+    },
+    "lokasi": "https://maps.app.goo.gl/example-sekura"
+  },
+  {
+    "id": "gulai-taboh",
+    "nama": "Gulai Taboh",
+    "kategori": "wisata-kuliner",
+    "ringkasan": "Gulai Khas Lampung dengan Cita Rasa Unik",
+    "deskripsi": "Gulai Taboh adalah masakan khas Lampung yang terbuat dari rebung (tunas bambu) yang dimasak dengan santan dan bumbu rempah khas. Rasanya gurih dengan tekstur unik dari rebung yang renyah.",
+    "gambarHero": "assets/wisata/tempoyak.png",
+    "galeri": [],
+    "estimasiBiaya": {
+      "porsi": "Rp20.000 - Rp35.000",
+      "total": "Rp20.000 - Rp35.000"
+    },
+    "kontak": {
+      "instagram": "@kulinerpesbar",
+      "whatsapp": "+6281234567890"
+    },
+    "lokasi": "https://maps.app.goo.gl/example-gulai"
   }
 ]

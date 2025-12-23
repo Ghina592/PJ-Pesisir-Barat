@@ -43,5 +43,14 @@
     "tanggal": "2025-10-30",
     "kategori": "himbauan",
     "lampiran": null
+  },
+  {
+    "id": "6",
+    "judul": "Jadwal Pelayanan Hari Libur Nasional",
+    "ringkasan": "Informasi mengenai jadwal pelayanan publik selama periode libur nasional bulan November-Desember 2025.",
+    "konten": "Pemerintah Kabupaten Pesisir Barat menginformasikan jadwal pelayanan publik selama periode libur nasional:\n\n1. Maulid Nabi Muhammad SAW (12 Rabiul Awal 1447 H / 15 September 2025) - LIBUR\n2. Hari Natal (25 Desember 2025) - LIBUR\n3. Tahun Baru 2026 (1 Januari 2026) - LIBUR\n\nPelayanan darurat tetap tersedia 24 jam melalui hotline: 0728-12345.",
+    "tanggal": "2025-11-01",
+    "kategori": "pelayanan",
+    "lampiran": null
   }
 ]

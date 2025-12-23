@@ -11,6 +11,7 @@
       <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="index.css" />
         <link rel="stylesheet" href="footer.css" />
+        <link rel="stylesheet" href="mobile.css" />
     <meta name="theme-color" content="#e9caa2" />
   </head>
   <body>
@@ -72,25 +73,11 @@
       <section class="event-listing-section">
         <h1 class="page-title">EVENT YANG AKAN DATANG</h1>
         
-        <div class="carousel-wrapper event-carousel">
-          <button class="carousel-btn btn-prev" aria-label="Sebelumnya">‹</button>
-          
-          <div class="carousel-track" id="eventCarousel">
-            <!-- Event cards will be loaded here -->
-          </div>
-          
-          <button class="carousel-btn btn-next" aria-label="Berikutnya">›</button>
+        <div id="eventList" class="event-list">
+          <!-- Event cards will be loaded here -->
         </div>
 
-        <div class="carousel-dots" id="eventDots"></div>
-      </section>
-
-      <section class="event-grid-section">
-        <h2 class="section-title">SEMUA EVENT</h2>
-        
-        <div id="eventGrid" class="event-grid">
-          <!-- All events will be loaded here -->
-        </div>
+        <div id="eventPagination" class="pagination-container"></div>
       </section>
     </main>
 
@@ -107,38 +94,24 @@
       document.addEventListener('DOMContentLoaded', async function() {
         const events = await DataManager.load('event');
         
-        // Render carousel
-        const carousel = document.getElementById('eventCarousel');
-        if (carousel) {
-          carousel.innerHTML = events.map(event => `
-            <div class="event-card" onclick="window.location.href='detail-event.html?id=${event.id}'">
-              <img src="${event.gambar}" class="event-image" alt="${event.nama}" />
-              <div class="event-info">
-                <h3>${event.nama}</h3>
-                <p class="event-date">${formatDateLong(event.tanggal)}</p>
-                <a href="detail-event.html?id=${event.id}">Lihat Selengkapnya...</a>
+        const pagination = new Pagination({
+          container: '#eventList',
+          paginationContainer: '#eventPagination',
+          itemsPerPage: 3,
+          renderItem: (event) => `
+            <div class="event-horizontal-card" onclick="window.location.href='detail-event.html?id=${event.id}'">
+              <img src="${event.gambar}" alt="${event.nama}" class="event-poster" />
+              <div class="event-details">
+                <h3 class="event-title">${event.nama}</h3>
+                <p class="event-meta-info">
+                  <span class="event-date-info">📅 ${formatDateLong(event.tanggal)}</span>
+                </p>
               </div>
             </div>
-          `).join('');
-
-          // Initialize carousel
-          new Carousel('.event-carousel', { autoPlay: true, interval: 5000 });
-        }
-
-        // Render grid
-        const grid = document.getElementById('eventGrid');
-        if (grid) {
-          grid.innerHTML = events.map(event => `
-            <div class="event-grid-card" onclick="window.location.href='detail-event.html?id=${event.id}'">
-              <img src="${event.gambar}" alt="${event.nama}" />
-              <div class="event-grid-info">
-                <h3>${event.nama}</h3>
-                <p class="event-date"><img src="assets/icon-date.png" alt="" /> ${formatDateLong(event.tanggal)}</p>
-                <p class="event-location"><img src="assets/map.png" alt="" style="width:16px" /> ${event.lokasi}</p>
-              </div>
-            </div>
-          `).join('');
-        }
+          `
+        });
+        
+        pagination.setData(events);
       });
     </script>
   </body>

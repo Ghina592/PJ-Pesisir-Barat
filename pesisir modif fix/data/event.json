@@ -57,5 +57,24 @@
       "whatsapp": "+6281555666777"
     },
     "linkPendaftaran": "https://example.com/krui-festival"
+  },
+  {
+    "id": "krui-pro-surfing",
+    "nama": "Krui Pro Surfing Championship 2025",
+    "ringkasan": "Kompetisi surfing internasional di Pantai Tanjung Setia",
+    "deskripsi": "Krui Pro Surfing Championship adalah kompetisi surfing tahunan yang mengundang peserta dari berbagai negara.\n\nPantai Tanjung Setia terkenal dengan ombaknya yang sempurna untuk surfing profesional.",
+    "tanggal": "2025-07-10",
+    "waktu": "07:00 WIB",
+    "lokasi": "Pantai Tanjung Setia",
+    "gambar": "assets/event/krakataupng.png",
+    "kategori": ["olahraga", "internasional"],
+    "hargaTiket": {
+      "penonton": "Gratis"
+    },
+    "kontak": {
+      "instagram": "@kruiprosurfing",
+      "whatsapp": "+6281666777888"
+    },
+    "linkPendaftaran": null
   }
 ]

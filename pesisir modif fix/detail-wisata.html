@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="pariwisata-sub.css" />
     
         <link rel="stylesheet" href="footer.css" />
+        <link rel="stylesheet" href="mobile.css" />
     
     <!-- meta for theme-color -->
     <meta name="theme-color" content="#e9caa2" />
@@ -142,60 +143,67 @@
           }
         }
 
-        // Build small slidable gallery
+        // Build gallery with carousel controls like homepage events
         const allImages = [wisata.gambarHero, ...(wisata.galeri || [])].filter(Boolean);
         let galleryHtml = '';
         if (allImages.length > 0) {
           galleryHtml = `
             <div class="gallery-section" style="margin: 30px 0;">
-              <h3 style="margin-bottom: 15px; color: #0c4a6e;">Galeri</h3>
-              <div class="gallery-wrapper" style="position: relative;">
-                <div class="gallery-track" id="galleryTrack" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; gap: 10px; padding: 10px 0;">
+              <h3 style="margin-bottom: 15px; color: #0c4a6e; font-weight: bold;">Galeri</h3>
+              <div class="carousel-wrapper" style="position: relative;">
+                <button class="carousel-btn btn-prev" onclick="scrollGallery(-1)" aria-label="Sebelumnya" style="position: absolute; left: -15px; top: 50%; transform: translateY(-50%); z-index: 10; background: #1b88c9; border: none; padding: 12px 16px; border-radius: 50%; cursor: pointer; font-size: 18px; color: white;">&lsaquo;</button>
+                <div class="gallery-track" id="galleryTrack" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; gap: 15px; padding: 10px 0; scrollbar-width: none; -ms-overflow-style: none;">
                   ${allImages.map((img, i) => `
-                    <div class="gallery-thumb" style="flex: 0 0 150px; scroll-snap-align: start; cursor: pointer;" onclick="window.gallery && window.gallery.open(${JSON.stringify(allImages)}, ${i})">
-                      <img src="${img}" alt="Gallery ${i+1}" style="width: 150px; height: 100px; object-fit: cover; border-radius: 8px; border: 2px solid #0c4a6e;" />
+                    <div class="gallery-thumb" style="flex: 0 0 280px; scroll-snap-align: start; cursor: pointer;" onclick="window.gallery && window.gallery.open(${JSON.stringify(allImages)}, ${i})">
+                      <img src="${img}" alt="Gallery ${i+1}" style="width: 280px; height: 200px; object-fit: cover; border-radius: 12px; border: 3px solid #0c4a6e;" />
                     </div>
                   `).join('')}
                 </div>
+                <button class="carousel-btn btn-next" onclick="scrollGallery(1)" aria-label="Berikutnya" style="position: absolute; right: -15px; top: 50%; transform: translateY(-50%); z-index: 10; background: #1b88c9; border: none; padding: 12px 16px; border-radius: 50%; cursor: pointer; font-size: 18px; color: white;">&rsaquo;</button>
               </div>
-              <p style="text-align: center; font-size: 12px; color: #888; margin-top: 10px;">Klik gambar untuk memperbesar</p>
             </div>
           `;
         }
 
         // Render content - cleaner layout like original
         document.getElementById('wisataDetail').innerHTML = `
-          <img src="${wisata.gambarHero}" alt="${wisata.nama}" class="detail-hero-img" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;" />
+          <div style="overflow: hidden; border-radius: 16px; margin-bottom: 25px;">
+            <img src="${wisata.gambarHero}" alt="${wisata.nama}" class="detail-hero-img" style="width: 100%; height: clamp(300px, 50vw, 500px); object-fit: cover; display: block;" />
+          </div>
           
-          <div class="detail-title" style="font-size: 28px; font-weight: bold; color: #0c4a6e; text-align: center; margin-bottom: 10px;">${wisata.nama}</div>
+          <div class="detail-title" style="font-size: clamp(22px, 5vw, 36px); font-weight: bold; color: #000; text-align: center; margin-bottom: 12px; text-transform: uppercase; line-height: 1.2;">${wisata.nama}</div>
           
-          <div class="detail-ringkasan" style="font-style: italic; text-align: center; color: #555; margin-bottom: 25px; font-size: 16px;">
+          <div class="detail-ringkasan" style="font-style: italic; text-align: center; color: #000; margin-bottom: 30px; font-size: clamp(14px, 3vw, 18px); font-weight: 600; line-height: 1.5; padding: 0 10px;">
             ${wisata.ringkasan}
           </div>
 
-          <div class="detail-desc" style="line-height: 1.8; margin-bottom: 30px;">
-            ${wisata.deskripsi.replace(/\n\n/g, '</p><p style="margin-bottom: 15px;">')}
+          <div class="detail-desc" style="line-height: 1.9; margin-bottom: 35px; font-size: clamp(14px, 2.5vw, 17px); color: #333; text-align: justify;">
+            ${wisata.deskripsi.replace(/\\n\\n/g, '</p><p style="margin-bottom: 18px;">')}
           </div>
 
           ${galleryHtml}
 
-          <div class="detail-info" style="background: #f9f9f9; padding: 20px; border-radius: 12px; margin-top: 20px;">
-            <h3 style="color: #0c4a6e; margin-bottom: 15px;">Estimasi Biaya</h3>
+          <div class="detail-info" style="background: #f9e4c7; padding: clamp(15px, 4vw, 30px); border-radius: 12px; margin-top: 25px; border: 2px solid #333; max-width: 100%;">
+            <h3 style="color: #0c4a6e; margin-bottom: 18px; font-weight: bold; font-size: clamp(16px, 3vw, 20px);">Estimasi Biaya</h3>
             ${costHtml}
             
-            <h3 style="color: #0c4a6e; margin-top: 25px; margin-bottom: 15px;">Kontak</h3>
-            <p style="margin-bottom: 8px;">
-              <img src="assets/instagram.png" alt="" style="width:20px; vertical-align:middle; margin-right:8px" />
-              ${wisata.kontak?.instagram || '-'}
+            <h3 style="color: #0c4a6e; margin-top: 30px; margin-bottom: 18px; font-weight: bold; font-size: clamp(16px, 3vw, 20px);">Kontak</h3>
+            <p style="margin-bottom: 12px; display: flex; align-items: center; flex-wrap: wrap;">
+              <img src="assets/instagram.png" alt="Instagram" style="width: 24px; height: 24px; margin-right: 12px;" />
+              <a href="${wisata.kontak?.instagramUrl || '#'}" target="_blank" style="color: #0c4a6e; text-decoration: none; font-weight: 500;">
+                ${wisata.kontak?.instagram || '-'}
+              </a>
             </p>
-            <p style="margin-bottom: 8px;">
-              <img src="assets/icons/wa.png" alt="" style="width:20px; vertical-align:middle; margin-right:8px" />
-              ${wisata.kontak?.whatsapp || '-'}
+            <p style="margin-bottom: 12px; display: flex; align-items: center; flex-wrap: wrap;">
+              <img src="assets/icons/wa.png" alt="WhatsApp" style="width: 24px; height: 24px; margin-right: 12px;" />
+              <a href="${wisata.kontak?.whatsappUrl || 'https://wa.me/' + (wisata.kontak?.whatsapp || '').replace(/[^0-9]/g, '')}" target="_blank" style="color: #0c4a6e; text-decoration: none; font-weight: 500;">
+                ${wisata.kontak?.whatsapp || '-'}
+              </a>
             </p>
             
-            <h3 style="color: #0c4a6e; margin-top: 25px; margin-bottom: 15px;">Lokasi</h3>
+            <h3 style="color: #0c4a6e; margin-top: 30px; margin-bottom: 18px; font-weight: bold; font-size: clamp(16px, 3vw, 20px);">Lokasi</h3>
             <p>
-              <a href="${wisata.lokasi}" target="_blank" style="display: inline-block; background: #0c4a6e; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none;">
+              <a href="${wisata.lokasi}" target="_blank" style="display: inline-block; background: #0c4a6e; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: clamp(13px, 2.5vw, 16px);">
                 📍 Buka di Google Maps
               </a>
             </p>
@@ -214,6 +222,32 @@
           mainNav.classList.toggle("open");
         });
       }
+
+      // Gallery scroll function for carousel buttons with infinite loop
+      function scrollGallery(direction) {
+        const track = document.getElementById('galleryTrack');
+        if (track) {
+          const scrollAmount = 300;
+          const maxScroll = track.scrollWidth - track.clientWidth;
+          
+          if (direction > 0) {
+            // Scrolling right - if at end, go to start
+            if (track.scrollLeft >= maxScroll - 10) {
+              track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+              track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+          } else {
+            // Scrolling left - if at start, go to end
+            if (track.scrollLeft <= 10) {
+              track.scrollTo({ left: maxScroll, behavior: 'smooth' });
+            } else {
+              track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            }
+          }
+        }
+      }
+      window.scrollGallery = scrollGallery;
     </script>
   </body>
 </html>

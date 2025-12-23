@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="header-profil.css" />
     <link rel="stylesheet" href="sejarah.css" />
     <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="mobile.css" />
 
     <!-- meta for theme-color -->
     <meta name="theme-color" content="#e9caa2" />
@@ -74,14 +75,17 @@
 
       <!-- NAVIGATION -->
        <nav class="main-nav">
-        <div class="nav-item" onclick="window.location.href='sejarah.html'">
+        <div class="nav-item active" onclick="window.location.href='sejarah.html'">
           SEJARAH
         </div>
         <div class="nav-item" onclick="window.location.href='lambang.html'">
           LAMBANG
         </div>
-        <div class="nav-item dropdown">
-          <a href="pemerintahan.html" class="dropbtn" onclick="window.location.href='pemerintahan.html'; return false;">PEMERINTAHAN ▾</a>
+        <div class="nav-item dropdown" id="pemerintahanDropdown">
+          <!-- Button 1: Trigger (no underline, just opens dropdown) -->
+          <span class="dropbtn dropdown-trigger" id="dropdownTrigger">PEMERINTAHAN ▾</span>
+          <!-- Button 2: Real link (hidden initially, shown when dropdown opens) -->
+          <a href="pemerintahan.html" class="dropbtn dropdown-link" id="dropdownLink" style="display:none;">PEMERINTAHAN ▾</a>
           <ul class="dropdown-menu">
             <li>
               <div
@@ -202,90 +206,11 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <!-- ABOUT -->
-        <div class="footer-about">
-          <img src="assets/img/logo-small.png" alt="logo" class="footer-logo" />
-
-          <h2 class="footer-title">
-            PEMERINTAHAN <br />
-            <span>KABUPATEN PESISIR BARAT</span>
-          </h2>
-
-          <div class="footer-address">
-            <p>
-              <img src="assets/map.png" />
-              Jl. Kesuma No. 1 Gedung A Lt.1 Kompleks Perkantoran Pemda, Kec.
-              Pesisir Tengah
-            </p>
-            <p>Kabupaten Pesisir Barat, Provinsi Lampung – Indonesia 34874</p>
-
-            <p><a href="https://api.whatsapp.com/send?phone=6285369989990&text=Tabik%20Pun,%20Perkenalkan%20nama%20saya%20.........,%20......%3F" target="_blank"><img src="assets/wa.png" alt="" /> +62 853-6998-9990</a></p>
-            <p>
-              <img src="assets/email.png" style="width: 25px" alt="" />
-              admin@pesisirbaratkab.go.id
-            </p>
-          </div>
-        </div>
-
-        <!-- IKUTI KAMI -->
-        <div class="footer-follow">
-          <h3 class="footer-heading">IKUTI KAMI</h3>
-
-          <div class="social-icons">
-            <a href="https://www.youtube.com/@pemkabpesisirbarat" target="_blank" title="YouTube"><img src="assets/youtube.png" alt="YouTube" /></a>
-            <a href="https://www.facebook.com/diskominfokpb" target="_blank" title="Facebook"><img src="assets/facebook.png" alt="Facebook" /></a>
-            <a href="https://www.instagram.com/pemkabpesisirbarat/" target="_blank" title="Instagram"><img src="assets/instagram.png" alt="Instagram" /></a>
-            <a href="https://x.com/DiskominfoKPB" target="_blank" title="X (Twitter)"><img src="assets/twitter.png" alt="X" /></a>
-          </div>
-
-          <p class="link-website">
-            <img src="assets/web.png" alt="" /> <a href="https://pesisirbaratkab.go.id" target="_blank">https://pesisirbaratkab.go.id</a>
-          </p>
-
-          <h3 class="footer-heading">STATISTIK PENGUNJUNG</h3>
-
-          <div class="visitor-stats">
-            <div>
-              <img src="assets/group.png" alt="" />
-              <p>Total</p>
-              <span>31,339</span>
-            </div>
-            <div>
-              <img src="assets/eye.png" alt="" />
-              <p>Hari Ini</p>
-              <span>79</span>
-            </div>
-            <div>
-              <img src="assets/calender.png" alt="" />
-              <p>Bulan Ini</p>
-              <span>405</span>
-            </div>
-            <div>
-              <img src="assets/calender-solid.png" alt="" />
-              <p>Tahun Ini</p>
-              <span>55,668</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- MAP -->
-        <div class="footer-map">
-          <h3 class="footer-heading">LOKASI</h3>
-          <img src="assets/lokasi.png" class="map-img" alt="Map" />
-        </div>
-      </div>
-
-      <!-- BOTTOM -->
-      <div class="footer-bottom" style="text-align: center">
-        © <span id="year"></span> Pemerintah Kabupaten Pesisir Barat — All
-        rights reserved.
-      </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
     <!-- Scripts -->
     <script src="script.js"></script>
+    <script src="footer-template.js"></script>
     <script>
       // === JS (inlined) ===
       // small interaction: click or press Enter/Space on emblem to toggle subtle enlarge class
@@ -321,19 +246,34 @@
         });
       }
 
-      // Dropdown Logic
-      document.querySelectorAll(".nav-item.dropdown").forEach((drop) => {
-        const btn = drop.querySelector(".dropbtn");
-        if(btn){
-            btn.addEventListener("click", function (e) {
-              e.stopPropagation();
-              drop.classList.toggle("open");
-            });
-        }
-      });
-      document.addEventListener("click", function () {
-        document.querySelectorAll(".nav-item.dropdown.open").forEach((d) => d.classList.remove("open"));
-      });
+      // 2-Button Dropdown Illusion Logic
+      const dropdownTrigger = document.getElementById("dropdownTrigger");
+      const dropdownLink = document.getElementById("dropdownLink");
+      const dropdown = document.getElementById("pemerintahanDropdown");
+      
+      if (dropdownTrigger && dropdownLink && dropdown) {
+        // Click trigger: show real link + open dropdown
+        dropdownTrigger.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Hide trigger, show real link
+          dropdownTrigger.style.display = "none";
+          dropdownLink.style.display = "flex"; /* Changed from block to flex for centering */
+          
+          // Open dropdown
+          dropdown.classList.add("open");
+        });
+        
+        // Click outside: reset to trigger button
+        document.addEventListener("click", function(e) {
+          if (!e.target.closest("#pemerintahanDropdown")) {
+            dropdown.classList.remove("open");
+            dropdownTrigger.style.display = "flex"; /* Changed from block to flex */
+            dropdownLink.style.display = "none";
+          }
+        });
+      }
     </script>
   </body>
 </html>

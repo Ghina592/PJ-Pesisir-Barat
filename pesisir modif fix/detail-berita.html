@@ -11,6 +11,7 @@
       <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="index.css" />
         <link rel="stylesheet" href="footer.css" />
+        <link rel="stylesheet" href="mobile.css" />
     <meta name="theme-color" content="#e9caa2" />
   </head>
   <body>
@@ -72,7 +73,7 @@
       <nav class="breadcrumb">
         <a href="index.html">BERANDA</a> &gt; 
         <a href="berita.html">BERITA</a> &gt; 
-        <span>DETAIL BERITA</span>
+        <span id="breadcrumbTitle">Loading...</span>
       </nav>
 
       <div class="page-layout">
@@ -83,7 +84,7 @@
           <div class="article-meta">
             <span id="articleCategory" class="article-category"></span>
             <span><img src="assets/icon-date.png" alt="" /> <span id="articleDate"></span></span>
-            <span><img src="assets/icon-view.png" alt="" /> <span id="articleViews"></span> views</span>
+
           </div>
 
           <img id="articleImage" src="" alt="" class="article-hero-image" />
@@ -141,9 +142,9 @@
 
         // Populate article
         document.getElementById('articleTitle').textContent = berita.judul;
+        updateBreadcrumbTitle(berita.judul);
         document.getElementById('articleCategory').textContent = berita.kategori?.toUpperCase() || '';
         document.getElementById('articleDate').textContent = formatDateLong(berita.tanggal);
-        document.getElementById('articleViews').textContent = berita.views;
         document.getElementById('articleImage').src = berita.gambar;
         document.getElementById('articleImage').alt = berita.judul;
         

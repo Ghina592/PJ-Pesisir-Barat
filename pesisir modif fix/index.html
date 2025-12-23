@@ -14,6 +14,7 @@
       <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="mobile.css" />
     <meta name="theme-color" content="#e9caa2" />
   </head>
   <body>
@@ -143,87 +144,129 @@
         </div>
       </section>
 
-      <!-- BERITA & INFORMASI -->
+      <!-- BERITA & INFORMASI - Functional Navbar -->
       <div class="card-table-berita">
-        <div class="header-table">
-          <div class="title berita-title">BERITA</div>
-          <div class="title info-title">INFORMASI</div>
+        <!-- Navbar Header - Functional Tabs -->
+        <div class="header-table nav-tabs">
+          <div class="title berita-title tab-active" id="tabBerita" onclick="switchTab('berita')">BERITA</div>
+          <div class="title info-title" id="tabInformasi" onclick="switchTab('informasi')">INFORMASI</div>
         </div>
 
-        <div class="content-table">
-          <!-- TABEL BERITA -->
-          <table class="table-berita">
-            <tr>
-              <td class="img-col">
-                <img src="assets/berita/berita1.png" alt="" />
-              </td>
-              <td class="text-col">
-                <div class="judul">
-                  WAKIL BUPATI IRAWAN TOPANI BUKA KEGIATAN SINKRONISASI DATA
-                  AKSI KONVERGENSI STUNTING TINGKAT KABUPATEN
-                </div>
-                <div class="meta">
-                  <img src="assets/icon-date.png" alt="" /> 29/10/2025
-                  <img src="assets/icon-view.png" alt="" /> 300
-                </div>
-              </td>
-            </tr>
+        <!-- Single Content Panel -->
+        <div class="content-table content-single">
+          <!-- BERITA Content (shown by default) -->
+          <div id="contentBerita" class="tab-content active">
+            <table class="table-berita full-width">
+              <tr>
+                <td class="img-col">
+                  <img src="assets/berita/berita1.png" alt="" />
+                </td>
+                <td class="text-col">
+                  <div class="judul">
+                    WAKIL BUPATI IRAWAN TOPANI BUKA KEGIATAN SINKRONISASI DATA
+                    AKSI KONVERGENSI STUNTING TINGKAT KABUPATEN
+                  </div>
+                  <div class="meta">
+                    <img src="assets/icon-date.png" alt="" /> 29/10/2025
+                  </div>
+                </td>
+              </tr>
 
-            <tr>
-              <td class="img-col">
-                <img src="assets/berita/berita2.png" alt="" />
-              </td>
-              <td class="text-col">
-                <div class="judul">
-                  WAKIL BUPATI IRAWAN TOPANI HADIRI KEGIATAN SAKAI SAMBAYAN:
-                  GURU BERKARYA
-                </div>
-                <div class="meta">
-                  <img src="assets/icon-date.png" alt="" /> 29/10/2025
-                  <img src="assets/icon-view.png" alt="" /> 300
-                </div>
-              </td>
-            </tr>
+              <tr>
+                <td class="img-col">
+                  <img src="assets/berita/berita2.png" alt="" />
+                </td>
+                <td class="text-col">
+                  <div class="judul">
+                    WAKIL BUPATI IRAWAN TOPANI HADIRI KEGIATAN SAKAI SAMBAYAN:
+                    GURU BERKARYA, MENYEMAI PRAKTIK BAIK, DAN MENUAI INSPIRASI DI MAN 1 KRUI
+                  </div>
+                  <div class="meta">
+                    <img src="assets/icon-date.png" alt="" /> 29/10/2025
+                  </div>
+                </td>
+              </tr>
 
-            <tr>
-              <td class="img-col">
-                <img src="assets/berita/berita3.png" alt="" />
-              </td>
-              <td class="text-col">
-                <div class="judul">
-                  SERAHKAN BANTUAN ATENSI, INI PESAN BUPATI DEDI IRAWAN
-                </div>
-                <div class="meta">
-                  <img src="assets/icon-date.png" alt="" /> 29/10/2025
-                  <img src="assets/icon-view.png" alt="" /> 300
-                </div>
-              </td>
-            </tr>
-          </table>
+              <tr>
+                <td class="img-col">
+                  <img src="assets/berita/berita3.png" alt="" />
+                </td>
+                <td class="text-col">
+                  <div class="judul">
+                    SERAHKAN BANTUAN ATENSI, INI PESAN BUPATI DEDI IRAWAN
+                  </div>
+                  <div class="meta">
+                    <img src="assets/icon-date.png" alt="" /> 29/10/2025
+                  </div>
+                </td>
+              </tr>
 
-          <!-- TABEL INFORMASI -->
-          <table class="table-info">
-            <tr>
-              <td>Pengumuman Seleksi Calon Paskibraka Kabupaten</td>
-            </tr>
-            <tr>
-              <td>Informasi Pelayanan Publik</td>
-            </tr>
-            <tr>
-              <td>Agenda Rapat Pemerintah Daerah</td>
-            </tr>
-            <tr>
-              <td>Pengumuman Kelulusan CPNS</td>
-            </tr>
-          </table>
-        </div>
-        
-        <!-- Lihat Semua buttons at bottom -->
-        <div style="display: flex; justify-content: space-between; padding: 20px 30px;">
-          <a href="berita.html" class="btn btn-primary" style="display: inline-block;">Lihat Semua Berita &rarr;</a>
-          <a href="informasi.html" class="btn btn-primary" style="display: inline-block;">Lihat Semua Informasi &rarr;</a>
+              <tr>
+                <td class="img-col">
+                  <img src="assets/berita/berita4.png" alt="" />
+                </td>
+                <td class="text-col">
+                  <div class="judul">
+                    BUPATI DEDI IRAWAN HADIRI PENGUATAN IMPLEMENTASI MANAJEMEN TALENTA ASN PEMDA SE-LAMPUNG
+                  </div>
+                  <div class="meta">
+                    <img src="assets/icon-date.png" alt="" /> 29/10/2025
+                  </div>
+                </td>
+              </tr>
+            </table>
+            
+            <!-- Button Selebihnya -->
+            <div style="text-align: center; margin-top: 20px;">
+              <a href="berita.html" class="title footer-btn">Selebihnya &rarr;</a>
+            </div>
+          </div>
+
+          <!-- INFORMASI Content (hidden by default) -->
+          <div id="contentInformasi" class="tab-content" style="display: none;">
+            <table class="table-info full-width">
+              <tr>
+                <td>PENYESUAIAN JADWAL PENGANGKATAN PEGAWAI PEMERINTAH DENGAN PERJANJIAN KERJA (PPPK) PARUH WAKTU DI LINGKUNGAN PEMERINTAH KABUPATEN PESISIR BARAT TAHUN ANGGARAN 2024 (kedua)</td>
+              </tr>
+              <tr>
+                <td>PENYESUAIAN JADWAL PENGANGKATAN PEGAWAI PEMERINTAH DENGAN PERJANJIAN KERJA (PPPK) PARUH WAKTU DI LINGKUNGAN PEMERINTAH KABUPATEN PESISIR BARAT TAHUN ANGGARAN 2024</td>
+              </tr>
+              <tr>
+                <td>PENYAMPAIAN DOKUMEN PENDAFTARAN DAFTAR RIWAYAT HIDUP (DRH) PEGAWAI PEMERINTAH DENGAN PERJANJIAN KERJA (PPPK) PARUH WAKTU DI LINGKUNGAN PEMERINTAH KABUPATEN PESISIR BARAT TAHUN ANGGARAN 2024</td>
+              </tr>
+              <tr>
+                <td>HASIL NILAI SELEKSI KOMPETENSI DAN PERSYARATAN KELENGKAPAN DOKUMEN PENETAPAN NI PPPK PEMKAB PESISIR BARAT TA 2024 PERIODE 1</td>
+              </tr>
+            </table>
+            
+            <!-- Button Selebihnya -->
+            <div style="text-align: center; margin-top: 20px;">
+              <a href="informasi.html" class="title footer-btn">Selebihnya &rarr;</a>
+            </div>
+          </div>
         </div>
       </div>
+
+      <script>
+        function switchTab(tab) {
+          const tabBerita = document.getElementById('tabBerita');
+          const tabInformasi = document.getElementById('tabInformasi');
+          const contentBerita = document.getElementById('contentBerita');
+          const contentInformasi = document.getElementById('contentInformasi');
+          
+          if (tab === 'berita') {
+            tabBerita.classList.add('tab-active');
+            tabInformasi.classList.remove('tab-active');
+            contentBerita.style.display = 'block';
+            contentInformasi.style.display = 'none';
+          } else {
+            tabInformasi.classList.add('tab-active');
+            tabBerita.classList.remove('tab-active');
+            contentInformasi.style.display = 'block';
+            contentBerita.style.display = 'none';
+          }
+        }
+      </script>
 
       <!-- MISI -->
       <section class="misi-section">

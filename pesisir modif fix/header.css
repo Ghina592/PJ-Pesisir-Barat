@@ -10,6 +10,7 @@
   background: url("assets/img/hero.png") center/cover no-repeat;
   color: #fff;
   z-index: 100;
+  margin-bottom: 32px; /* Space for breadcrumb bar */
 }
 
 /* --- OVERLAY (Dark filter) --- */
@@ -43,30 +44,38 @@
 }
 
 /* =========================================
-   BREADCRUMB - Consistent Positioning
+   BREADCRUMB - Row below navbar
    ========================================= */
 .breadcrumb {
-  padding: 15px 18px;
+  position: absolute;
+  bottom: -32px;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background: rgba(90, 115, 130, 0.95);
+  font-size: 13px;
+  color: #fff;
+  z-index: 98;
   margin: 0;
-  font-size: 14px;
-  color: #555;
-  max-width: var(--container, 1200px);
-  margin: 0 auto;
 }
 
 .breadcrumb a {
-  color: #0c4a6e;
+  color: #a8d4e6;
   text-decoration: none;
   font-weight: 500;
 }
 
 .breadcrumb a:hover {
   text-decoration: underline;
+  color: #fff;
 }
 
 .breadcrumb span {
-  color: #333;
-  font-weight: 600;
+  color: #fff;
+  font-weight: 700;
 }
 
 /* --- WELCOME TEXT (Top) --- */
@@ -132,21 +141,10 @@
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
 }
 
-/* Name tags under officials */
+/* Name tags removed as per user request */
 .official::after {
-  content: attr(data-name);
-  display: block;
-  background: linear-gradient(135deg, #1a9cb8 0%, #06586b 100%);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 600;
-  text-align: center;
-  padding: 4px 8px;
-  border-radius: 4px;
-  margin-top: 5px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
+  content: none !important;
+  display: none !important;
 }
 
 /* --- HERO CENTER (Logo + Slogan + Search) --- */
@@ -255,6 +253,11 @@
   background: rgba(4, 64, 80, 0.95);
 }
 
+/* Active nav item - current page */
+.nav-item.active {
+  background: rgba(80, 110, 125, 0.95);
+}
+
 /* Dropdown */
 .nav-item.dropdown {
   position: relative;
@@ -288,7 +291,7 @@
   z-index: 9999;
 }
 
-.nav-item.dropdown:hover .dropdown-menu,
+/* Click-only dropdown (no hover) - works better on touch devices */
 .nav-item.dropdown.open .dropdown-menu {
   display: flex;
 }
@@ -299,7 +302,7 @@
 
 .dropdown-menu .nav-item {
   padding: 12px 20px;
-  text-align: left;
+  text-align: center; /* Centered text */
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 

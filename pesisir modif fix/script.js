@@ -479,6 +479,17 @@ function formatDateLong(dateString) {
   });
 }
 
+/**
+ * Update breadcrumb title dynamically based on content title
+ * @param {string} title - The title to display in breadcrumb
+ */
+function updateBreadcrumbTitle(title) {
+  const breadcrumb = document.querySelector('.breadcrumb span:last-child');
+  if (breadcrumb) {
+    breadcrumb.textContent = title.toUpperCase();
+  }
+}
+
 // =============================================================================
 // INITIALIZE ON DOM READY
 // =============================================================================
@@ -514,6 +525,61 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Dropdown click handler: Click 1 = open, Click 2 = navigate (works on ALL devices)
+  const dropdowns = document.querySelectorAll('.nav-item.dropdown');
+  dropdowns.forEach(dropdown => {
+    const dropbtn = dropdown.querySelector('.dropbtn');
+    if (dropbtn) {
+      // Remove any existing onclick that blocks navigation
+      if (dropbtn.hasAttribute('onclick')) {
+        const onclickValue = dropbtn.getAttribute('onclick');
+        // Store the href for later navigation
+        const hrefMatch = onclickValue.match(/window\.location\.href\s*=\s*['"]([^'"]+)['"]/);
+        if (hrefMatch) {
+          dropbtn.dataset.navHref = hrefMatch[1];
+        }
+        // Remove the onclick to prevent conflicts
+        dropbtn.removeAttribute('onclick');
+      }
+      
+      dropbtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Check if dropdown is already open
+        const isOpen = dropdown.classList.contains('open');
+        
+        if (isOpen) {
+          // Second click: navigate to the page
+          const navHref = dropbtn.dataset.navHref || dropbtn.getAttribute('href');
+          if (navHref && navHref !== '#') {
+            window.location.href = navHref;
+          }
+        } else {
+          // First click: open dropdown
+          // Close other dropdowns first
+          dropdowns.forEach(other => {
+            if (other !== dropdown) {
+              other.classList.remove('open');
+            }
+          });
+          
+          // Open this dropdown
+          dropdown.classList.add('open');
+        }
+      });
+    }
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item.dropdown')) {
+      dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('open');
+      });
+    }
+  });
+
   // Initialize global search on any page with search input
   const searchInput = document.getElementById("searchInput");
   const searchBtn = document.getElementById("searchBtn");
@@ -535,3 +601,71 @@ window.Search = Search;
 window.getUrlParam = getUrlParam;
 window.formatDate = formatDate;
 window.formatDateLong = formatDateLong;
+
+// =============================================================================
+// NAV ACTIVE STATE - Auto-detect current page
+// =============================================================================
+function setActiveNav() {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navItems = document.querySelectorAll('.main-nav .nav-item');
+  
+  // Map of pages to their parent nav category
+  const pageToNav = {
+    'index.html': 'beranda',
+    'profil.html': 'profil',
+    'sejarah.html': 'profil',
+    'lambang.html': 'profil', 
+    'pemerintahan.html': 'profil',
+    'profil_bupati.html': 'profil',
+    'profil_wabup.html': 'profil',
+    'visi-misi.html': 'profil',
+    'pariwisata.html': 'pariwisata',
+    'wisata-alam.html': 'pariwisata',
+    'wisata-budaya.html': 'pariwisata',
+    'wisata-kuliner.html': 'pariwisata',
+    'detail-wisata.html': 'pariwisata',
+    'berita.html': 'beranda',
+    'informasi.html': 'beranda',
+    'event.html': 'beranda',
+  };
+  
+  const activeCategory = pageToNav[currentPage];
+  
+  navItems.forEach(item => {
+    const itemText = item.textContent.trim().toLowerCase();
+    const isDropdown = item.classList.contains('dropdown');
+    
+    if (isDropdown) {
+      const btn = item.querySelector('.dropbtn');
+      if (btn && btn.textContent.toLowerCase().includes(activeCategory)) {
+        item.classList.add('active');
+      }
+    } else if (itemText.includes(activeCategory)) {
+      item.classList.add('active');
+    }
+  });
+}
+
+// =============================================================================
+// BREADCRUMB - Move inside header for absolute positioning (DESKTOP ONLY)
+// =============================================================================
+function moveBreadcrumbToHeader() {
+  // Skip on mobile - breadcrumb should stay in main content area
+  if (window.innerWidth <= 768) {
+    return;
+  }
+  
+  const breadcrumb = document.querySelector('.breadcrumb');
+  const header = document.querySelector('header.hero');
+  
+  if (breadcrumb && header) {
+    // Move breadcrumb to be last child of header (before closing </header>)
+    header.appendChild(breadcrumb);
+  }
+}
+
+// Auto-init on page load
+document.addEventListener('DOMContentLoaded', function() {
+  setActiveNav();
+  moveBreadcrumbToHeader();
+});

@@ -11,6 +11,7 @@
       <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="index.css" />
         <link rel="stylesheet" href="footer.css" />
+        <link rel="stylesheet" href="mobile.css" />
     <meta name="theme-color" content="#e9caa2" />
   </head>
   <body>
@@ -94,12 +95,9 @@
         const pagination = new Pagination({
           container: '#informasiList',
           paginationContainer: '#informasiPagination',
-          itemsPerPage: 10,
+          itemsPerPage: 5,
           renderItem: (item) => `
             <div class="informasi-item" onclick="window.location.href='detail-informasi.html?id=${item.id}'">
-              <div class="informasi-icon">
-                <img src="assets/icon-info.png" alt="" onerror="this.src='assets/icon-date.png'" />
-              </div>
               <div class="informasi-content">
                 <span class="informasi-category">${item.kategori?.toUpperCase() || 'UMUM'}</span>
                 <h3 class="informasi-title">${item.judul}</h3>

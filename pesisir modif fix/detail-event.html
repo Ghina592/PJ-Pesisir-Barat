@@ -11,6 +11,7 @@
       <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="index.css" />
         <link rel="stylesheet" href="footer.css" />
+        <link rel="stylesheet" href="mobile.css" />
     <meta name="theme-color" content="#e9caa2" />
   </head>
   <body>
@@ -66,7 +67,7 @@
       <nav class="breadcrumb">
         <a href="index.html">BERANDA</a> &gt; 
         <a href="event.html">EVENT</a> &gt; 
-        <span>DETAIL EVENT</span>
+        <span id="breadcrumbTitle">Loading...</span>
       </nav>
 
       <div class="page-layout">
@@ -141,6 +142,7 @@
 
         // Populate event details
         document.getElementById('eventTitle').textContent = event.nama;
+        updateBreadcrumbTitle(event.nama);
         document.getElementById('eventDate').textContent = formatDateLong(event.tanggal) + ' - ' + event.waktu;
         document.getElementById('eventLocation').textContent = event.lokasi;
         document.getElementById('eventImage').src = event.gambar;

@@ -48,5 +48,25 @@
     "gambar": "assets/berita/berita2.png",
     "kategori": "pemerintahan",
     "views": 120
+  },
+  {
+    "id": "6",
+    "judul": "Pemkab Pesisir Barat Gelar Musrenbang Tingkat Kecamatan",
+    "ringkasan": "Pemerintah Kabupaten Pesisir Barat menggelar Musrenbang tingkat kecamatan untuk menyerap aspirasi masyarakat.",
+    "konten": "Krui - Pemerintah Kabupaten Pesisir Barat menggelar Musyawarah Perencanaan Pembangunan (Musrenbang) tingkat kecamatan di seluruh wilayah kabupaten.\n\nKegiatan ini bertujuan untuk menyerap aspirasi dan usulan pembangunan dari masyarakat yang akan dimasukkan dalam Rencana Kerja Pemerintah Daerah (RKPD) tahun anggaran 2026.\n\n\"Musrenbang adalah wadah penting bagi masyarakat untuk menyampaikan kebutuhan pembangunan di daerahnya masing-masing,\" ujar Sekretaris Daerah Kabupaten Pesisir Barat.",
+    "tanggal": "2025-10-26",
+    "gambar": "assets/berita/berita3.png",
+    "kategori": "pemerintahan",
+    "views": 95
+  },
+  {
+    "id": "7",
+    "judul": "Festival Pesisir Barat 2025 Sukses Menarik Ribuan Wisatawan",
+    "ringkasan": "Festival tahunan Pesisir Barat berhasil menarik lebih dari 5.000 wisatawan domestik dan mancanegara.",
+    "konten": "Krui - Festival Pesisir Barat 2025 yang digelar di Pantai Labuhan Jukung sukses besar dengan menarik lebih dari 5.000 wisatawan dari berbagai daerah.\n\nFestival yang berlangsung selama tiga hari ini menampilkan berbagai atraksi budaya, lomba surfing, pameran UMKM, dan kuliner khas Pesisir Barat.\n\n\"Kami sangat bersyukur antusiasme masyarakat dan wisatawan sangat tinggi. Ini membuktikan potensi pariwisata Pesisir Barat sangat besar,\" kata Kepala Dinas Pariwisata Kabupaten Pesisir Barat.",
+    "tanggal": "2025-10-25",
+    "gambar": "assets/berita/berita4.png",
+    "kategori": "pariwisata",
+    "views": 210
   }
 ]

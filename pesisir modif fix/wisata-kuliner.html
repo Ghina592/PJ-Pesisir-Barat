@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="pariwisata-sub.css" />
     
         <link rel="stylesheet" href="footer.css" />
+        <link rel="stylesheet" href="mobile.css" />
     
     <!-- meta for theme-color -->
     <meta name="theme-color" content="#e9caa2" />
@@ -72,7 +73,7 @@
         <div class="nav-item" onclick="window.location.href='wisata-budaya.html'">
           WISATA BUDAYA
         </div>
-        <div class="nav-item" onclick="window.location.href='wisata-kuliner.html'">
+        <div class="nav-item active" onclick="window.location.href='wisata-kuliner.html'">
           WISATA KULINER
         </div>
       </nav>
@@ -93,6 +94,7 @@
                 <!-- Cards will be loaded dynamically -->
                 <p>Loading...</p>
             </div>
+            <div id="wisataPagination" class="pagination-container" style="margin-top: 30px;"></div>
         </div>
     </main>
 
@@ -110,9 +112,11 @@
         const allWisata = await DataManager.load('wisata');
         const wisataKuliner = allWisata.filter(w => w.kategori === 'wisata-kuliner');
         
-        const container = document.getElementById('wisataList');
-        if (container && wisataKuliner.length > 0) {
-          container.innerHTML = wisataKuliner.map(w => `
+        const pagination = new Pagination({
+          container: '#wisataList',
+          paginationContainer: '#wisataPagination',
+          itemsPerPage: 3,
+          renderItem: (w) => `
             <a href="detail-wisata.html?id=${w.id}" style="text-decoration: none; color: inherit; display: block; width: 100%;">
               <div class="wisata-card">
                 <img src="${w.gambarHero}" alt="${w.nama}" />
@@ -120,10 +124,10 @@
                 <div class="wisata-card-desc">${w.ringkasan}</div>
               </div>
             </a>
-          `).join('');
-        } else if (container) {
-          container.innerHTML = '<p>Belum ada data wisata kuliner.</p>';
-        }
+          `
+        });
+        
+        pagination.setData(wisataKuliner);
       });
 
       // Hamburger menu

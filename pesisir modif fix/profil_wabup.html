@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="header-profil.css" />
     <link rel="stylesheet" href="sejarah.css" />
     <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="mobile.css" />
     <style>
       .logo-wrapper {
         display: flex;
@@ -102,8 +103,9 @@
         <div class="nav-item" onclick="window.location.href='lambang.html'">
           LAMBANG
         </div>
-        <div class="nav-item dropdown">
-          <button class="dropbtn">PEMERINTAHAN ▾</button>
+        <div class="nav-item dropdown" id="pemerintahanDropdown">
+          <span class="dropbtn dropdown-trigger" id="dropdownTrigger">PEMERINTAHAN ▾</span>
+          <a href="pemerintahan.html" class="dropbtn dropdown-link" id="dropdownLink" style="display:none;">PEMERINTAHAN ▾</a>
           <ul class="dropdown-menu">
             <li>
               <div
@@ -228,19 +230,28 @@
         });
       }
 
-      // Dropdown Logic
-      document.querySelectorAll(".nav-item.dropdown").forEach((drop) => {
-        const btn = drop.querySelector(".dropbtn");
-        if(btn){
-            btn.addEventListener("click", function (e) {
-              e.stopPropagation();
-              drop.classList.toggle("open");
-            });
-        }
-      });
-      document.addEventListener("click", function () {
-        document.querySelectorAll(".nav-item.dropdown.open").forEach((d) => d.classList.remove("open"));
-      });
+      // 2-Button Dropdown Illusion Logic
+      const dropdownTrigger = document.getElementById("dropdownTrigger");
+      const dropdownLink = document.getElementById("dropdownLink");
+      const dropdown = document.getElementById("pemerintahanDropdown");
+      
+      if (dropdownTrigger && dropdownLink && dropdown) {
+        dropdownTrigger.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropdownTrigger.style.display = "none";
+          dropdownLink.style.display = "flex";
+          dropdown.classList.add("open");
+        });
+        
+        document.addEventListener("click", function(e) {
+          if (!e.target.closest("#pemerintahanDropdown")) {
+            dropdown.classList.remove("open");
+            dropdownTrigger.style.display = "flex";
+            dropdownLink.style.display = "none";
+          }
+        });
+      }
     </script>
   </body>
 </html>

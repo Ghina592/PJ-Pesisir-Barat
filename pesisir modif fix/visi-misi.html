@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Pesisir Barat — Profil</title>
+    <title>Pesisir Barat - Visi Misi</title>
 
     <!-- Fonts -->
     <link
@@ -16,15 +16,16 @@
     <link rel="stylesheet" href="header-profil.css" />
     <link rel="stylesheet" href="sejarah.css" />
     <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="mobile.css" />
     <style>
       .logo-wrapper {
         display: flex;
-        justify-content: center; /* posisi horizontal tengah */
-        margin-bottom: 20px; /* jarak dengan paragraf */
+        justify-content: center;
+        margin-bottom: 20px;
       }
 
       .logo-wrapper img {
-        max-width: 500px; /* optional: atur ukuran logo */
+        max-width: 500px;
         height: auto;
         width: 300px;
       }
@@ -42,18 +43,54 @@
         font-style: italic;
         line-height: 1.3;
       }
+
+      .misi-list {
+        padding-left: 0;
+        margin: 0;
+        list-style: none;
+        counter-reset: misi-counter;
+      }
+
+      .misi-list li {
+        counter-increment: misi-counter;
+        margin-bottom: 14px;
+        line-height: 1.7;
+        display: flex;
+        gap: 12px;
+      }
+
+      .misi-list li::before {
+        content: counter(misi-counter) ".";
+        font-weight: bold;
+        min-width: 20px;
+        flex-shrink: 0;
+      }
+
+      /* MOBILE FIXES - INLINE OVERRIDE */
+      @media (max-width: 768px) {
+        .main-nav .nav-item {
+          padding: 6px 3px !important;
+          font-size: 9px !important;
+        }
+        .main-nav .dropbtn,
+        .main-nav .dropdown-trigger,
+        .main-nav .dropdown-link {
+          padding: 6px 3px !important;
+          font-size: 9px !important;
+        }
+        .breadcrumb {
+          margin-top: -10px !important;
+        }
+      }
     </style>
-    <!-- meta for theme-color -->
     <meta name="theme-color" content="#e9caa2" />
   </head>
   <body>
-    <!-- DARI SINI -->
     <!-- TOP BAR / HERO -->
     <header class="hero">
       <div class="hero-overlay"></div>
 
       <div class="hero-top container">
-        <!-- Welcome Text (Center) -->
         <div class="hero-content">
           <h1 class="hero-title">SELAMAT DATANG DI WEBSITE RESMI</h1>
           <h2 class="hero-subtitle">KABUPATEN PESISIR BARAT</h2>
@@ -74,7 +111,7 @@
 
             <div class="search">
               <input type="search" placeholder="Search..." id="searchInput" />
-              <button id="searchBtn" aria-label="search">🔍</button>
+              <button id="searchBtn" aria-label="search">&#128269;</button>
             </div>
           </div>
 
@@ -88,9 +125,8 @@
         </div>
       </div>
 
-      <!-- sampe sini -->
       <!-- HAMBURGER (MOBILE ONLY) -->
-      <div class="hamburger" id="hamburgerBtn">☰</div>
+      <div class="hamburger" id="hamburgerBtn">&#9776;</div>
 
       <!-- NAVIGATION -->
       <nav class="main-nav">
@@ -100,30 +136,22 @@
         <div class="nav-item" onclick="window.location.href='lambang.html'">
           LAMBANG
         </div>
-        <div class="nav-item dropdown">
-          <button class="dropbtn">PEMERINTAHAN ▾</button>
+        <div class="nav-item dropdown" id="pemerintahanDropdown">
+          <span class="dropbtn dropdown-trigger" id="dropdownTrigger">PEMERINTAHAN ▾</span>
+          <a href="pemerintahan.html" class="dropbtn dropdown-link" id="dropdownLink" style="display:none;">PEMERINTAHAN ▾</a>
           <ul class="dropdown-menu">
             <li>
-              <div
-                class="nav-item"
-                onclick="window.location.href='profil_bupati.html'"
-              >
+              <div class="nav-item" onclick="window.location.href='profil_bupati.html'">
                 BUPATI
               </div>
             </li>
             <li>
-              <div
-                class="nav-item"
-                onclick="window.location.href='profil_wabup.html'"
-              >
+              <div class="nav-item" onclick="window.location.href='profil_wabup.html'">
                 WAKIL BUPATI
               </div>
             </li>
             <li>
-              <div
-                class="nav-item"
-                onclick="window.location.href='visi-misi.html'"
-              >
+              <div class="nav-item" onclick="window.location.href='visi-misi.html'">
                 VISI MISI
               </div>
             </li>
@@ -149,63 +177,40 @@
           <span class="divider">|</span>
 
           <div class="section-title">
-            <div>Visi & Misi</div>
-            <div>Pemerintah Kabupaten Pesisir Barat</div>
+            <div>Visi & Misi Pemerintah Kabupaten Pesisir Barat</div>
             <div>2025 - 2029</div>
           </div>
         </div>
 
-        <section class="content" aria-label="Deskripsi lambang">
-          <p>
-            visi : “TERWUJUDNYA PESISIR BARAT YANG SEJAHTERA, MAJU, MADANI DAN
-            RELIGIUS SEBAGAI DESTINASI WISATA TERDEPAN”.  <br />
-            Misi :  <br />
-            1. Mengembangkan Infrastruktur yang Berketahanan Pangan dan Tangguh
-            Bencana serta Berkelanjutan <br />
-            2. Mendorong Pertumbuhan Ekonomi yang Berbasis Sumber Daya Alam dan
-            Ekonomi Kerakyatan <br />
-            3. Memperkuat Sumber Daya Manusia yang Berkualitas dan Berdaya Saing
-            <br />
-            4. Mewujudkan Kehidupan Masyarakat yang Harmonis dan Berbudaya 5.
-            Meningkatkan Kualitas Tata Kelola Pemerintahan dan Pelayanan Publik
-          </p>
+        <section class="content" aria-label="Visi Misi">
+          <div style="margin-bottom: 30px;">
+            <h3 style="font-weight: bold; margin-bottom: 12px; font-size: 18px;">Visi :</h3>
+            <p style="font-style: italic; font-size: 16px; line-height: 1.7;">
+              "TERWUJUDNYA PESISIR BARAT YANG SEJAHTERA, MAJU, MADANI DAN RELIGIUS SEBAGAI DESTINASI WISATA TERDEPAN"
+            </p>
+          </div>
+          
+          <div>
+            <h3 style="font-weight: bold; margin-bottom: 18px; font-size: 18px;">Misi :</h3>
+            <ol class="misi-list">
+              <li>Mengembangkan Infrastruktur yang Berketahanan Pangan dan Tangguh Bencana serta Berkelanjutan</li>
+              <li>Mendorong Pertumbuhan Ekonomi yang Berbasis Sumber Daya Alam dan Ekonomi Kerakyatan</li>
+              <li>Memperkuat Sumber Daya Manusia yang Berkualitas dan Berdaya Saing</li>
+              <li>Mewujudkan Kehidupan Masyarakat yang Harmonis dan Berbudaya</li>
+              <li>Meningkatkan Kualitas Tata Kelola Pemerintahan dan Pelayanan Publik</li>
+            </ol>
+          </div>
         </section>
       </div>
     </main>
 
-        <!-- FOOTER -->
+    <!-- FOOTER -->
     <div id="footer-placeholder"></div>
 
     <!-- Scripts -->
     <script src="script.js"></script>
     <script src="footer-template.js"></script>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    <script>
-      // === JS (inlined) ===
-      // small interaction: click or press Enter/Space on emblem to toggle subtle enlarge class
-      (function () {
-        var emblem = document.getElementById("emblem");
-        if (!emblem) return;
-
-        emblem.addEventListener("click", function () {
-          emblem.classList.toggle("enlarged");
-        });
-
-        emblem.addEventListener("keydown", function (e) {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            emblem.classList.toggle("enlarged");
-          }
-        });
-
-        // tahun footer
-        var y = new Date().getFullYear();
-        var el = document.getElementById("year");
-        if (el) el.textContent = y;
-      })();
-    </script>
     <script>
       // HAMBURGER MENU TOGGLE
       const hamburger = document.getElementById("hamburgerBtn");
@@ -217,23 +222,28 @@
         });
       }
 
-      // Dropdown Logic
-      document.querySelectorAll(".nav-item.dropdown").forEach((drop) => {
-        const btn = drop.querySelector(".dropbtn");
-        if(btn){
-            btn.addEventListener("click", function (e) {
-              e.stopPropagation();
-              drop.classList.toggle("open");
-            });
-        }
-      });
-      document.addEventListener("click", function () {
-        document.querySelectorAll(".nav-item.dropdown.open").forEach((d) => d.classList.remove("open"));
-      });
+      // 2-Button Dropdown Illusion Logic
+      const dropdownTrigger = document.getElementById("dropdownTrigger");
+      const dropdownLink = document.getElementById("dropdownLink");
+      const dropdown = document.getElementById("pemerintahanDropdown");
+      
+      if (dropdownTrigger && dropdownLink && dropdown) {
+        dropdownTrigger.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropdownTrigger.style.display = "none";
+          dropdownLink.style.display = "flex";
+          dropdown.classList.add("open");
+        });
+        
+        document.addEventListener("click", function(e) {
+          if (!e.target.closest("#pemerintahanDropdown")) {
+            dropdown.classList.remove("open");
+            dropdownTrigger.style.display = "flex";
+            dropdownLink.style.display = "none";
+          }
+        });
+      }
     </script>
   </body>
 </html>
-
-
-
-
